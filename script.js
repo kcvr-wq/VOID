@@ -1,4 +1,3 @@
-```javascript
 /* =====================================================
    VOID — نظام شاشة الافتتاح
 ===================================================== */
@@ -8,25 +7,26 @@ document.addEventListener("DOMContentLoaded", () => {
     const intro = document.getElementById("intro");
     const site = document.getElementById("site");
 
-    // نخفي الموقع في البداية
-    site.style.opacity = "0";
-    site.style.visibility = "hidden";
+    // نتأكد أن الموقع مخفي في البداية
+    site.classList.remove("show");
 
-    // مدة شاشة الافتتاح
+    // ننتظر حتى تنتهي شاشة الافتتاح
     setTimeout(() => {
 
-        // بدء اختفاء شاشة الافتتاح
+        // إخفاء شاشة VOID
         intro.classList.add("hide");
 
-        // إظهار الموقع بعد بداية الانتقال
+        // بعد بدء اختفاء شاشة الافتتاح
         setTimeout(() => {
 
-            site.style.visibility = "visible";
-            site.style.opacity = "1";
+            // إظهار الموقع
+            site.classList.add("show");
 
-        }, 700);
+            // السماح بالتمرير
+            document.body.style.overflow = "auto";
 
-    }, 3500);
+        }, 900);
+
+    }, 4000);
 
 });
-```
