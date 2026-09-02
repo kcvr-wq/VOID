@@ -47,6 +47,7 @@ body {
 
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
 
     transition:
         opacity 1.2s ease,
@@ -60,7 +61,9 @@ body {
 }
 
 
-/* الوهج الأحمر */
+/* =====================================================
+   الوهج الأحمر
+===================================================== */
 
 .intro-glow {
     position: absolute;
@@ -78,7 +81,9 @@ body {
 }
 
 
-/* محتوى الافتتاح */
+/* =====================================================
+   محتوى الافتتاح
+===================================================== */
 
 .intro-content {
     position: relative;
@@ -90,6 +95,8 @@ body {
 
     gap: 20px;
 
+    opacity: 0;
+
     animation: introAppear 1.8s ease forwards;
 }
 
@@ -97,6 +104,7 @@ body {
     font-size: clamp(58px, 10vw, 125px);
 
     font-weight: 200;
+
     letter-spacing: 0.38em;
 
     margin-left: 0.38em;
@@ -117,7 +125,8 @@ body {
 
     opacity: 0;
 
-    animation: subtitleAppear 1s ease 1.1s forwards;
+    animation:
+        subtitleAppear 1s ease 1.1s forwards;
 }
 
 .intro-line {
@@ -126,9 +135,11 @@ body {
 
     background: #5f0000;
 
-    box-shadow: 0 0 10px rgba(120, 0, 0, 0.5);
+    box-shadow:
+        0 0 10px rgba(120, 0, 0, 0.5);
 
-    animation: lineExpand 1.2s ease 0.6s forwards;
+    animation:
+        lineExpand 1.2s ease 0.6s forwards;
 }
 
 
@@ -137,17 +148,30 @@ body {
 ===================================================== */
 
 #site {
+    position: fixed;
+    inset: 0;
+
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
 
-    display: flex;
+    display: block;
 
-  opacity: 0;
-visibility: hidden;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 
-transition:
-    opacity 1.2s ease,
-    visibility 1.2s ease;
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
+}
+
+
+/* الموقع بعد انتهاء الافتتاح */
+
+#site.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
 }
 
 
@@ -179,10 +203,25 @@ transition:
     border-left: 1px solid #260000;
 
     z-index: 100;
+
+    /* مخفية خارج الشاشة في البداية */
+    transform: translateX(100%);
+
+    transition:
+        transform 1.05s cubic-bezier(0.77, 0, 0.18, 1);
 }
 
 
-/* الشعار */
+/* القائمة تدخل بعد ظهور الموقع */
+
+#site.show .sidebar {
+    transform: translateX(0);
+}
+
+
+/* =====================================================
+   الشعار
+===================================================== */
 
 .logo {
     color: #eeeeee;
@@ -205,7 +244,9 @@ transition:
 }
 
 
-/* الخط تحت الشعار */
+/* =====================================================
+   الخط تحت الشعار
+===================================================== */
 
 .sidebar-divider {
     width: 100%;
@@ -273,7 +314,8 @@ transition:
 
     transform: translateY(-50%);
 
-    transition: height 0.35s ease;
+    transition:
+        height 0.35s ease;
 }
 
 .nav-item:hover,
@@ -304,7 +346,8 @@ transition:
 
     font-size: 11px;
 
-    transition: color 0.35s ease;
+    transition:
+        color 0.35s ease;
 }
 
 .nav-item:hover .nav-number,
@@ -373,10 +416,31 @@ transition:
             transparent 45%
         ),
         #050505;
+
+    opacity: 0;
+
+    transform: translateY(15px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+
+    transition-delay: 0.35s;
 }
 
 
-/* حرف خلفية ضخم */
+/* المحتوى يظهر بعد الموقع */
+
+#site.show .main-content {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =====================================================
+   حرف الخلفية الضخم
+===================================================== */
 
 .background-symbol {
     position: absolute;
@@ -384,7 +448,9 @@ transition:
     left: 50%;
     top: 50%;
 
-    transform: translate(-50%, -50%);
+    transform:
+        translate(-50%, -50%)
+        scale(0.97);
 
     font-size: min(65vw, 800px);
 
@@ -395,16 +461,46 @@ transition:
     user-select: none;
 
     pointer-events: none;
+
+    opacity: 0;
+
+    transition:
+        opacity 1.5s ease,
+        transform 1.5s ease;
+}
+
+#site.show .background-symbol {
+    opacity: 1;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
 }
 
 
-/* الترحيب */
+/* =====================================================
+   الترحيب
+===================================================== */
 
 .welcome {
     position: relative;
     z-index: 2;
 
     text-align: center;
+
+    transform: translateY(-20px);
+
+    opacity: 0;
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+
+    transition-delay: 0.65s;
+}
+
+#site.show .welcome {
+    opacity: 1;
 
     transform: translateY(-20px);
 }
@@ -468,27 +564,39 @@ transition:
 
     0% {
         opacity: 0;
-        transform: translateY(20px) scale(0.97);
+
+        transform:
+            translateY(20px)
+            scale(0.97);
     }
 
     100% {
         opacity: 1;
-        transform: translateY(0) scale(1);
+
+        transform:
+            translateY(0)
+            scale(1);
     }
 }
+
 
 @keyframes subtitleAppear {
 
     from {
         opacity: 0;
-        transform: translateY(8px);
+
+        transform:
+            translateY(8px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
 }
+
 
 @keyframes lineExpand {
 
@@ -501,28 +609,22 @@ transition:
     }
 }
 
+
 @keyframes glowPulse {
 
     0%,
     100% {
         opacity: 0.45;
-        transform: scale(0.95);
+
+        transform:
+            scale(0.95);
     }
 
     50% {
         opacity: 0.8;
-        transform: scale(1.08);
-    }
-}
 
-@keyframes siteAppear {
-
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
+        transform:
+            scale(1.08);
     }
 }
 
@@ -563,7 +665,8 @@ transition:
     }
 
     .welcome h2 {
-        font-size: clamp(45px, 12vw, 80px);
+        font-size:
+            clamp(45px, 12vw, 80px);
     }
 
     .welcome p {
@@ -571,7 +674,8 @@ transition:
     }
 
     .intro-content h1 {
-        font-size: clamp(50px, 16vw, 90px);
+        font-size:
+            clamp(50px, 16vw, 90px);
     }
 }
 
