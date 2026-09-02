@@ -433,6 +433,9 @@ body {
     overflow-y: auto;
     overflow-x: hidden;
 
+    /* إخفاء شريط التمرير مع بقاء التمرير شغالًا */
+    scrollbar-width: none;
+
     background:
         radial-gradient(
             circle at 50% 10%,
@@ -453,6 +456,14 @@ body {
     transition-delay:
         .35s;
 }
+
+
+/* إخفاء شريط التمرير في Chrome / Edge / Safari */
+
+.main-content::-webkit-scrollbar {
+    display: none;
+}
+
 
 #site.show .main-content {
     opacity: 1;
