@@ -1,0 +1,623 @@
+```css
+/* =====================================================
+   VOID — البداية
+   الواجهة الافتتاحية + القائمة الجانبية
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    background: #050505;
+    color: #e8e8e8;
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   شاشة الافتتاح
+===================================================== */
+
+#intro {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(85, 0, 0, 0.18),
+            transparent 42%
+        ),
+        #030303;
+
+    opacity: 1;
+    visibility: visible;
+
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
+}
+
+#intro.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+
+/* الوهج الأحمر */
+
+.intro-glow {
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    border-radius: 50%;
+
+    background: rgba(90, 0, 0, 0.18);
+
+    filter: blur(90px);
+
+    animation: glowPulse 4s ease-in-out infinite;
+}
+
+
+/* محتوى الافتتاح */
+
+.intro-content {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 20px;
+
+    animation: introAppear 1.8s ease forwards;
+}
+
+.intro-content h1 {
+    font-size: clamp(58px, 10vw, 125px);
+
+    font-weight: 200;
+    letter-spacing: 0.38em;
+
+    margin-left: 0.38em;
+
+    color: #eeeeee;
+
+    text-shadow:
+        0 0 15px rgba(130, 0, 0, 0.35),
+        0 0 45px rgba(80, 0, 0, 0.2);
+}
+
+.intro-content p {
+    color: #777;
+
+    font-size: 13px;
+
+    letter-spacing: 0.18em;
+
+    opacity: 0;
+
+    animation: subtitleAppear 1s ease 1.1s forwards;
+}
+
+.intro-line {
+    width: 0;
+    height: 1px;
+
+    background: #5f0000;
+
+    box-shadow: 0 0 10px rgba(120, 0, 0, 0.5);
+
+    animation: lineExpand 1.2s ease 0.6s forwards;
+}
+
+
+/* =====================================================
+   الموقع
+===================================================== */
+
+#site {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+
+    opacity: 0;
+
+    animation: siteAppear 1.4s ease 0.2s forwards;
+}
+
+
+/* =====================================================
+   القائمة الجانبية
+===================================================== */
+
+.sidebar {
+    position: fixed;
+
+    top: 0;
+    right: 0;
+
+    width: 285px;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 55px 30px 30px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #090909 0%,
+            #060606 100%
+        );
+
+    border-left: 1px solid #260000;
+
+    z-index: 100;
+}
+
+
+/* الشعار */
+
+.logo {
+    color: #eeeeee;
+
+    font-size: 27px;
+    font-weight: 300;
+
+    letter-spacing: 0.25em;
+
+    text-align: right;
+
+    padding-right: 4px;
+}
+
+.logo span {
+    color: #720000;
+
+    text-shadow:
+        0 0 14px rgba(130, 0, 0, 0.35);
+}
+
+
+/* الخط تحت الشعار */
+
+.sidebar-divider {
+    width: 100%;
+    height: 1px;
+
+    margin: 28px 0 35px;
+
+    background:
+        linear-gradient(
+            to left,
+            #650000,
+            rgba(101, 0, 0, 0)
+        );
+}
+
+
+/* =====================================================
+   عناصر القائمة
+===================================================== */
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.nav-item {
+    position: relative;
+
+    min-height: 58px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 17px;
+
+    padding: 0 17px;
+
+    color: #777;
+
+    text-decoration: none;
+
+    border-right: 1px solid transparent;
+
+    transition:
+        color 0.35s ease,
+        background 0.35s ease,
+        border-color 0.35s ease,
+        transform 0.35s ease;
+}
+
+.nav-item::before {
+    content: "";
+
+    position: absolute;
+
+    right: -1px;
+    top: 50%;
+
+    width: 2px;
+    height: 0;
+
+    background: #760000;
+
+    transform: translateY(-50%);
+
+    transition: height 0.35s ease;
+}
+
+.nav-item:hover,
+.nav-item.active {
+    color: #eeeeee;
+
+    background:
+        linear-gradient(
+            to left,
+            rgba(100, 0, 0, 0.16),
+            rgba(100, 0, 0, 0)
+        );
+}
+
+.nav-item:hover::before,
+.nav-item.active::before {
+    height: 70%;
+}
+
+.nav-item:hover {
+    transform: translateX(-4px);
+}
+
+.nav-number {
+    color: #4d4d4d;
+
+    font-family: monospace;
+
+    font-size: 11px;
+
+    transition: color 0.35s ease;
+}
+
+.nav-item:hover .nav-number,
+.nav-item.active .nav-number {
+    color: #700000;
+}
+
+
+/* =====================================================
+   أسفل القائمة
+===================================================== */
+
+.sidebar-bottom {
+    margin-top: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 18px 5px 0;
+
+    border-top: 1px solid #171717;
+
+    color: #3d3d3d;
+
+    font-size: 10px;
+
+    letter-spacing: 0.2em;
+}
+
+.sidebar-status {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #650000;
+
+    box-shadow:
+        0 0 8px rgba(120, 0, 0, 0.7);
+}
+
+
+/* =====================================================
+   المحتوى الرئيسي
+===================================================== */
+
+.main-content {
+    position: relative;
+
+    width: calc(100% - 285px);
+    min-height: 100vh;
+
+    margin-right: 285px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(60, 0, 0, 0.08),
+            transparent 45%
+        ),
+        #050505;
+}
+
+
+/* حرف خلفية ضخم */
+
+.background-symbol {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    font-size: min(65vw, 800px);
+
+    font-weight: 900;
+
+    color: rgba(80, 0, 0, 0.025);
+
+    user-select: none;
+
+    pointer-events: none;
+}
+
+
+/* الترحيب */
+
+.welcome {
+    position: relative;
+    z-index: 2;
+
+    text-align: center;
+
+    transform: translateY(-20px);
+}
+
+.welcome-small {
+    margin-bottom: 18px;
+
+    color: #666;
+
+    font-size: 12px;
+
+    letter-spacing: 0.4em;
+
+    text-transform: uppercase;
+}
+
+.welcome h2 {
+    font-size: clamp(60px, 9vw, 130px);
+
+    font-weight: 200;
+
+    letter-spacing: 0.25em;
+
+    margin-left: 0.25em;
+
+    color: #ededed;
+
+    text-shadow:
+        0 0 25px rgba(100, 0, 0, 0.15);
+}
+
+.welcome-line {
+    width: 110px;
+    height: 1px;
+
+    margin: 25px auto;
+
+    background:
+        linear-gradient(
+            to right,
+            transparent,
+            #650000,
+            transparent
+        );
+}
+
+.welcome p {
+    color: #555;
+
+    font-size: 14px;
+
+    letter-spacing: 0.12em;
+}
+
+
+/* =====================================================
+   الحركات
+===================================================== */
+
+@keyframes introAppear {
+
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes subtitleAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineExpand {
+
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 150px;
+    }
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        opacity: 0.45;
+        transform: scale(0.95);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.08);
+    }
+}
+
+@keyframes siteAppear {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* =====================================================
+   الهاتف
+===================================================== */
+
+@media (max-width: 800px) {
+
+    body {
+        overflow: hidden;
+    }
+
+    .sidebar {
+        width: 220px;
+
+        padding:
+            35px 18px 22px;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .nav-item {
+        min-height: 52px;
+
+        padding: 0 12px;
+
+        font-size: 14px;
+    }
+
+    .main-content {
+        width: calc(100% - 220px);
+
+        margin-right: 220px;
+    }
+
+    .welcome h2 {
+        font-size: clamp(45px, 12vw, 80px);
+    }
+
+    .welcome p {
+        font-size: 11px;
+    }
+
+    .intro-content h1 {
+        font-size: clamp(50px, 16vw, 90px);
+    }
+}
+
+
+@media (max-width: 560px) {
+
+    .sidebar {
+        width: 185px;
+
+        padding:
+            30px 12px 18px;
+    }
+
+    .main-content {
+        width: calc(100% - 185px);
+
+        margin-right: 185px;
+    }
+
+    .logo {
+        font-size: 19px;
+    }
+
+    .nav-item {
+        gap: 10px;
+
+        font-size: 12px;
+    }
+
+    .nav-number {
+        font-size: 9px;
+    }
+
+    .welcome-small {
+        font-size: 9px;
+    }
+
+    .welcome h2 {
+        font-size: 38px;
+
+        letter-spacing: 0.15em;
+
+        margin-left: 0.15em;
+    }
+
+    .welcome p {
+        font-size: 9px;
+
+        letter-spacing: 0.05em;
+    }
+}
+```
