@@ -1,32 +1,263 @@
 /* =====================================================
-   VOID — نظام شاشة الافتتاح
+   VOID — النظام الرئيسي
 ===================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
 
+    /* =================================================
+       العناصر
+    ================================================= */
+
     const intro = document.getElementById("intro");
     const site = document.getElementById("site");
 
-    // نتأكد أن الموقع مخفي في البداية
-    site.classList.remove("show");
+    const navItems =
+        document.querySelectorAll(".nav-item");
 
-    // ننتظر حتى تنتهي شاشة الافتتاح
+    const continueCard =
+        document.getElementById("continue-card");
+
+    const continueButton =
+        document.getElementById("continue-button");
+
+    const continueEmpty =
+        document.getElementById("continue-empty");
+
+    const lastChapterTitle =
+        document.getElementById("last-chapter-title");
+
+    const progressPercent =
+        document.getElementById("progress-percent");
+
+    const progressFill =
+        document.getElementById("progress-fill");
+
+
+    /* =================================================
+       شاشة الافتتاح
+    ================================================= */
+
     setTimeout(() => {
 
-        // إخفاء شاشة VOID
         intro.classList.add("hide");
 
-        // بعد بدء اختفاء شاشة الافتتاح
         setTimeout(() => {
 
-            // إظهار الموقع
             site.classList.add("show");
 
-            // السماح بالتمرير
-            document.body.style.overflow = "auto";
+            document.body.style.overflow =
+                "auto";
 
         }, 900);
 
     }, 4000);
+
+
+    /* =================================================
+       التنقل بالقائمة
+    ================================================= */
+
+    navItems.forEach((item) => {
+
+        item.addEventListener("click", () => {
+
+            navItems.forEach((nav) => {
+                nav.classList.remove("active");
+            });
+
+            item.classList.add("active");
+
+        });
+
+    });
+
+
+    /* =================================================
+       نظام متابعة القراءة
+       
+       هذا النظام جاهز للفصول التي سنبنيها لاحقًا.
+
+       البيانات المحفوظة ستكون بالشكل:
+
+       {
+           chapter: "chapter-1",
+           title: "الفصل الأول",
+           progress: 72,
+           url: "chapters/chapter-1/"
+       }
+    ================================================= */
+
+    const savedProgress =
+        localStorage.getItem("voidReadingProgress");
+
+
+    if (savedProgress) {
+
+        try {
+
+            const data =
+                JSON.parse(savedProgress);
+
+
+            /* =============================================
+               عرض آخر فصل
+            ============================================= */
+
+            if (data.title) {
+
+                lastChapterTitle.textContent =
+                    data.title;
+
+            }
+
+
+            /* =============================================
+               نسبة التقدم
+            ============================================= */
+
+            let progress =
+                Number(data.progress) || 0;
+
+            progress =
+                Math.max(
+                    0,
+                    Math.min(
+                        100,
+                        progress
+                    )
+                );
+
+
+            progressPercent.textContent =
+                `${progress}%`;
+
+            progressFill.style.width =
+                `${progress}%`;
+
+
+            /* =============================================
+               إظهار بطاقة المتابعة
+            ============================================= */
+
+            continueCard.classList.add(
+                "has-progress"
+            );
+
+
+            /* =============================================
+               زر المتابعة
+            ============================================= */
+
+            if (data.url) {
+
+                continueButton.href =
+                    data.url;
+
+            }
+
+
+            continueButton.addEventListener(
+                "click",
+                () => {
+
+                    if (!data.url) {
+
+                        return;
+
+                    }
+
+                }
+            );
+
+        } catch (error) {
+
+            console.error(
+                "تعذر قراءة بيانات التقدم:",
+                error
+            );
+
+        }
+
+    }
+
+
+    /* =================================================
+       دالة حفظ تقدم القراءة
+       
+       سنستخدمها داخل صفحات الفصول لاحقًا.
+
+       مثال:
+
+       saveReadingProgress(
+           "chapter-1",
+           "الفصل الأول",
+           72,
+           "chapters/chapter-1/"
+       );
+    ================================================= */
+
+    window.saveReadingProgress =
+        function (
+            chapter,
+            title,
+            progress,
+            url
+        ) {
+
+            const data = {
+
+                chapter:
+                    chapter,
+
+                title:
+                    title,
+
+                progress:
+                    Math.max(
+                        0,
+                        Math.min(
+                            100,
+                            Number(progress) || 0
+                        )
+                    ),
+
+                url:
+                    url || "#"
+
+            };
+
+
+            localStorage.setItem(
+                "voidReadingProgress",
+                JSON.stringify(data)
+            );
+
+        };
+
+
+    /* =================================================
+       منع أزرار الصفحات غير الموجودة حاليًا
+       
+       عندما نبني الفصول سنضع الروابط الحقيقية.
+    ================================================= */
+
+    const emptyLinks =
+        document.querySelectorAll(
+            'a[href="#"]'
+        );
+
+
+    emptyLinks.forEach((link) => {
+
+        link.addEventListener(
+            "click",
+            (event) => {
+
+                event.preventDefault();
+
+            }
+        );
+
+    });
 
 });
