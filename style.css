@@ -142,9 +142,12 @@ body {
 
     display: flex;
 
-    opacity: 0;
+  opacity: 0;
+visibility: hidden;
 
-    animation: siteAppear 1.4s ease 0.2s forwards;
+transition:
+    opacity 1.2s ease,
+    visibility 1.2s ease;
 }
 
 
