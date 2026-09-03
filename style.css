@@ -1,3 +1,4 @@
+
 /* =====================================================
    VOID — الهوية الرئيسية
 ===================================================== */
@@ -227,6 +228,9 @@ body {
         transform 1.05s
         cubic-bezier(.77,0,.18,1);
 }
+
+
+/* اللابتوب */
 
 #site.show .sidebar {
     transform:
@@ -471,6 +475,7 @@ body {
 .main-content::-webkit-scrollbar {
     width: 0;
     height: 0;
+
     display: none;
 }
 
@@ -1210,23 +1215,28 @@ body {
         border-top: 0;
 
         transform:
-            translateX(100%);
+            translate3d(100%, 0, 0);
 
         z-index: 220;
 
+        will-change:
+            transform;
+
         transition:
-            transform .45s
-            cubic-bezier(.77,0,.18,1);
+            transform .35s
+            cubic-bezier(.22,.61,.36,1);
     }
+
 
     #site.show .sidebar {
         transform:
-            translateX(100%);
+            translate3d(100%, 0, 0);
     }
+
 
     #site.show .sidebar.mobile-open {
         transform:
-            translateX(0);
+            translate3d(0, 0, 0);
     }
 
 
@@ -1242,13 +1252,7 @@ body {
         display: block;
 
         background:
-            rgba(0, 0, 0, .48);
-
-        backdrop-filter:
-            blur(2px);
-
-        -webkit-backdrop-filter:
-            blur(2px);
+            rgba(0, 0, 0, .55);
 
         opacity: 0;
 
@@ -1259,9 +1263,10 @@ body {
         z-index: 210;
 
         transition:
-            opacity .35s ease,
-            visibility .35s ease;
+            opacity .25s ease,
+            visibility .25s ease;
     }
+
 
     .mobile-menu-overlay.show {
         opacity: 1;
@@ -1273,7 +1278,7 @@ body {
 
 
     /* =================================================
-       زر فتح القائمة
+       زر فتح القائمة — ☰
     ================================================== */
 
     .mobile-menu-button {
@@ -1298,7 +1303,7 @@ body {
         padding: 0;
 
         border:
-            1px solid #350000;
+            1px solid #4f0000;
 
         border-radius: 2px;
 
@@ -1308,54 +1313,66 @@ body {
         -webkit-appearance: none;
 
         background:
-            rgba(5, 5, 5, .94);
+            rgba(5, 5, 5, .96);
 
         box-shadow:
-            0 8px 25px rgba(0, 0, 0, .35);
+            0 8px 25px rgba(0, 0, 0, .4),
+            0 0 14px rgba(90, 0, 0, .08);
 
         cursor: pointer;
 
         z-index: 250;
 
         transition:
-            border-color .3s ease,
-            background .3s ease,
-            transform .3s ease;
+            border-color .25s ease,
+            background .25s ease,
+            transform .25s ease,
+            opacity .2s ease;
     }
 
-    .mobile-menu-button:focus,
-    .mobile-menu-button:focus-visible {
-        outline: none;
-
-        box-shadow:
-            0 8px 25px rgba(0, 0, 0, .35);
-    }
 
     .mobile-menu-button:hover {
-        border-color: #680000;
+        border-color:
+            #760000;
 
         background:
-            rgba(90, 0, 0, .12);
+            rgba(75, 0, 0, .16);
 
         transform:
             translateY(-1px);
     }
 
+
+    .mobile-menu-button:active {
+        transform:
+            scale(.96);
+    }
+
+
     .mobile-menu-button span {
         display: block;
 
-        width: 20px;
-        height: 1px;
+        width: 23px;
+        height: 2px;
 
-        background: #a0a0a0;
+        border-radius: 1px;
+
+        background:
+            #d4d4d4;
+
+        box-shadow:
+            0 0 5px rgba(255, 255, 255, .08);
 
         transition:
-            background .3s ease;
+            background .25s ease;
     }
 
+
     .mobile-menu-button:hover span {
-        background: #eeeeee;
+        background:
+            #ffffff;
     }
+
 
     .mobile-menu-button.hidden {
         opacity: 0;
@@ -1370,18 +1387,19 @@ body {
 
 
     /* =================================================
-       زر إغلاق القائمة
+       زر إغلاق القائمة — على اليسار
     ================================================== */
 
     .mobile-close-button {
         position: absolute;
 
         top: 17px;
-        right: 17px;
-        left: auto;
 
-        width: 42px;
-        height: 42px;
+        left: 17px;
+        right: auto;
+
+        width: 44px;
+        height: 44px;
 
         display: flex;
 
@@ -1391,9 +1409,9 @@ body {
         padding: 0;
 
         border:
-            1px solid #420000;
+            1px solid #5b0000;
 
-        border-radius: 2px;
+        border-radius: 3px;
 
         outline: none;
 
@@ -1403,11 +1421,12 @@ body {
         background:
             linear-gradient(
                 145deg,
-                rgba(100, 0, 0, .16),
-                rgba(255, 255, 255, .02)
+                rgba(105, 0, 0, .2),
+                rgba(255, 255, 255, .025)
             );
 
-        color: #b9b9b9;
+        color:
+            #d2d2d2;
 
         font-family:
             "Segoe UI",
@@ -1415,44 +1434,52 @@ body {
             Arial,
             sans-serif;
 
-        font-size: 21px;
+        font-size:
+            24px;
+
+        font-weight:
+            400;
 
         line-height: 1;
 
         cursor: pointer;
 
         box-shadow:
-            inset 0 0 0 1px rgba(120, 0, 0, .05),
-            0 5px 18px rgba(0, 0, 0, .25);
+            0 6px 20px rgba(0, 0, 0, .35),
+            inset 0 0 12px rgba(100, 0, 0, .04);
 
-        z-index: 2;
+        z-index: 5;
 
         transition:
-            color .3s ease,
-            border-color .3s ease,
-            background .3s ease,
-            transform .3s ease;
+            color .25s ease,
+            border-color .25s ease,
+            background .25s ease,
+            transform .25s ease;
     }
 
-    .mobile-close-button:focus,
-    .mobile-close-button:focus-visible {
-        outline: none;
-    }
 
     .mobile-close-button:hover {
-        color: #eeeeee;
+        color:
+            #ffffff;
 
-        border-color: #760000;
+        border-color:
+            #850000;
 
         background:
             linear-gradient(
                 145deg,
-                rgba(110, 0, 0, .25),
-                rgba(255, 255, 255, .03)
+                rgba(125, 0, 0, .3),
+                rgba(255, 255, 255, .04)
             );
 
         transform:
-            translateX(2px);
+            translateX(-2px);
+    }
+
+
+    .mobile-close-button:active {
+        transform:
+            scale(.94);
     }
 
 
@@ -1466,11 +1493,13 @@ body {
         margin-top: 40px;
     }
 
+
     .sidebar-divider {
         margin:
             25px 0
             30px;
     }
+
 
     .navigation {
         width: 100%;
@@ -1481,6 +1510,7 @@ body {
 
         gap: 8px;
     }
+
 
     .nav-item {
         flex: none;
@@ -1501,6 +1531,7 @@ body {
         border-bottom: 0;
     }
 
+
     .nav-item::before {
         top: 50%;
 
@@ -1514,11 +1545,13 @@ body {
             translateY(-50%);
     }
 
+
     .nav-item:hover,
     .nav-item.active {
         transform:
             translateX(-4px);
     }
+
 
     .nav-item:hover::before,
     .nav-item.active::before {
@@ -1526,11 +1559,13 @@ body {
         height: 70%;
     }
 
+
     .nav-number {
         display: inline;
 
         font-size: 11px;
     }
+
 
     .sidebar-bottom {
         display: flex;
@@ -1564,12 +1599,14 @@ body {
         -webkit-overflow-scrolling: touch;
     }
 
+
     .main-content::-webkit-scrollbar {
         width: 0;
         height: 0;
 
         display: none;
     }
+
 
     .hero-section {
         min-height: auto;
@@ -1583,13 +1620,16 @@ body {
         padding-top: 20px;
     }
 
+
     .hero-cover {
         width: 100%;
     }
 
+
     .cover-frame {
         width: min(75vw, 310px);
     }
+
 
     .hero-info {
         width: 100%;
@@ -1598,6 +1638,7 @@ body {
 
         text-align: center;
     }
+
 
     .hero-info h2 {
         font-size:
@@ -1610,10 +1651,12 @@ body {
             .15em;
     }
 
+
     .hero-line {
         margin:
             22px auto;
     }
+
 
     .hero-description {
         margin:
@@ -1624,11 +1667,13 @@ body {
         line-height: 2;
     }
 
+
     .hero-actions {
         justify-content: center;
 
         flex-wrap: wrap;
     }
+
 
     .primary-button,
     .secondary-button {
@@ -1636,15 +1681,18 @@ body {
             1 1 180px;
     }
 
+
     .story-section,
     .continue-section,
     .latest-section {
         margin-top: 75px;
     }
 
+
     .section-heading h3 {
         font-size: 18px;
     }
+
 
     .story-text p {
         text-align: right;
@@ -1654,14 +1702,17 @@ body {
         line-height: 2.1;
     }
 
+
     .continue-card {
         padding:
             25px 20px;
     }
 
+
     .continue-content {
         gap: 22px;
     }
+
 
     .latest-card {
         flex-direction: column;
@@ -1672,9 +1723,11 @@ body {
             23px 20px;
     }
 
+
     .latest-button {
         width: 100%;
     }
+
 
     .site-footer {
         margin-top: 80px;
@@ -1683,6 +1736,7 @@ body {
 
         gap: 8px;
     }
+
 }
 
 
@@ -1697,8 +1751,10 @@ body {
             25px 14px 65px;
     }
 
+
     .mobile-menu-button {
         top: 14px;
+
         right: 14px;
         left: auto;
 
@@ -1706,23 +1762,32 @@ body {
         height: 43px;
     }
 
+
     .mobile-close-button {
         top: 14px;
-        right: 14px;
 
-        width: 40px;
-        height: 40px;
+        left: 14px;
+        right: auto;
+
+        width: 41px;
+        height: 41px;
+
+        font-size:
+            23px;
     }
+
 
     .cover-frame {
         width:
             min(78vw, 285px);
     }
 
+
     .hero-description {
         font-size:
             12px;
     }
+
 
     .primary-button,
     .secondary-button {
@@ -1730,22 +1795,28 @@ body {
         flex-basis: 100%;
     }
 
+
     .section-heading {
         gap: 10px;
     }
+
 
     .section-heading h3 {
         font-size:
             16px;
     }
 
+
     .empty-symbol {
         font-size:
             25px;
     }
 
+
     .continue-empty h4 {
         font-size:
             16px;
     }
+
 }
+```
