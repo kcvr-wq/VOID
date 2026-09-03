@@ -1177,14 +1177,12 @@ body {
     }
 
 
-    /* =================================================
-       القائمة الجانبية — درج من اليسار
-    ================================================== */
+    /* القائمة الجانبية — درج من اليمين */
 
     .sidebar {
         top: 0;
-        left: 0;
-        right: auto;
+        right: 0;
+        left: auto;
         bottom: auto;
 
         width: min(82vw, 300px);
@@ -1197,15 +1195,15 @@ body {
 
         align-items: stretch;
 
-        border-left: 0;
-
-        border-right:
+        border-left:
             1px solid #260000;
+
+        border-right: 0;
 
         border-top: 0;
 
         transform:
-            translateX(-100%);
+            translateX(100%);
 
         transition:
             transform .45s
@@ -1214,7 +1212,7 @@ body {
 
     #site.show .sidebar {
         transform:
-            translateX(-100%);
+            translateX(100%);
     }
 
     #site.show .sidebar.mobile-open {
@@ -1223,15 +1221,14 @@ body {
     }
 
 
-    /* =================================================
-       زر فتح القائمة
-    ================================================== */
+    /* زر فتح القائمة */
 
     .mobile-menu-button {
         position: fixed;
 
         top: 18px;
-        left: 18px;
+        right: 18px;
+        left: auto;
 
         width: 46px;
         height: 46px;
@@ -1298,15 +1295,14 @@ body {
     }
 
 
-    /* =================================================
-       زر إغلاق القائمة
-    ================================================== */
+    /* زر إغلاق القائمة */
 
     .mobile-close-button {
         position: absolute;
 
         top: 16px;
-        left: 16px;
+        right: 16px;
+        left: auto;
 
         width: 40px;
         height: 40px;
@@ -1348,13 +1344,11 @@ body {
             rgba(90, 0, 0, .12);
 
         transform:
-            translateX(-2px);
+            translateX(2px);
     }
 
 
-    /* =================================================
-       محتوى القائمة على الهاتف
-    ================================================== */
+    /* محتوى القائمة */
 
     .logo {
         text-align: right;
@@ -1379,8 +1373,7 @@ body {
     }
 
     .nav-item {
-        flex:
-            none;
+        flex: none;
 
         width: 100%;
 
@@ -1436,9 +1429,7 @@ body {
     }
 
 
-    /* =================================================
-       المحتوى الرئيسي
-    ================================================== */
+    /* المحتوى الرئيسي */
 
     .main-content {
         position: absolute;
@@ -1581,7 +1572,8 @@ body {
 
     .mobile-menu-button {
         top: 14px;
-        left: 14px;
+        right: 14px;
+        left: auto;
 
         width: 43px;
         height: 43px;
@@ -1622,4 +1614,3 @@ body {
             16px;
     }
 }
-```
