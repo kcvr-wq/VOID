@@ -1,16 +1,24 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>VOID</title>
 
     <link rel="stylesheet" href="style.css">
+
 </head>
 
+
 <body>
+
 
     <!-- =====================================================
          شاشة الافتتاح
@@ -28,7 +36,9 @@
 
             <div class="intro-line"></div>
 
-            <p>حين يبدأ الفراغ... تبدأ الحكاية.</p>
+            <p>
+                حين يبدأ الفراغ... تبدأ الحكاية.
+            </p>
 
         </div>
 
@@ -75,15 +85,13 @@
         <aside class="sidebar">
 
 
-            <!-- زر إغلاق القائمة — الهاتف فقط -->
-
             <button
                 class="mobile-close-button"
                 id="mobile-close-button"
                 type="button"
                 aria-label="إغلاق القائمة"
             >
-                ←
+                →
             </button>
 
 
@@ -97,22 +105,37 @@
 
             <nav class="navigation">
 
-                <a href="#home" class="nav-item active">
+                <a
+                    href="#home"
+                    class="nav-item active"
+                >
                     <span class="nav-number">01</span>
                     <span>الرئيسية</span>
                 </a>
 
-                <a href="chapters/" class="nav-item">
+
+                <a
+                    href="chapters/"
+                    class="nav-item"
+                >
                     <span class="nav-number">02</span>
                     <span>الفصول</span>
                 </a>
 
-                <a href="#" class="nav-item">
+
+                <a
+                    href="#"
+                    class="nav-item"
+                >
                     <span class="nav-number">03</span>
                     <span>عالم الرواية</span>
                 </a>
 
-                <a href="#" class="nav-item">
+
+                <a
+                    href="#"
+                    class="nav-item"
+                >
                     <span class="nav-number">04</span>
                     <span>إعدادات الموقع</span>
                 </a>
@@ -122,7 +145,9 @@
 
             <div class="sidebar-bottom">
 
-                <span>VOID</span>
+                <span>
+                    VOID
+                </span>
 
                 <span class="sidebar-status"></span>
 
@@ -136,7 +161,10 @@
              المحتوى الرئيسي
         ================================================== -->
 
-        <main class="main-content" id="home">
+        <main
+            class="main-content"
+            id="home"
+        >
 
 
             <div class="background-symbol">
@@ -189,8 +217,9 @@
                     <div class="hero-actions">
 
                         <a
-                            href="#"
+                            href="chapters/"
                             class="primary-button"
+                            id="start-reading-button"
                         >
                             ابدأ القراءة
                         </a>
@@ -275,6 +304,8 @@
                 >
 
 
+                    <!-- الحالة الافتراضية -->
+
                     <div
                         class="continue-empty"
                         id="continue-empty"
@@ -297,6 +328,8 @@
                     </div>
 
 
+                    <!-- حالة وجود تقدم -->
+
                     <div
                         class="continue-content"
                         id="continue-content"
@@ -311,7 +344,7 @@
 
 
                             <h4 id="last-chapter-title">
-                                الفصل 1
+                                —
                             </h4>
 
                         </div>
@@ -405,8 +438,9 @@
 
                     <a
                         href="#"
-                        class="latest-button"
+                        class="latest-button disabled"
                         id="latest-button"
+                        aria-disabled="true"
                     >
                         قراءة الفصل
                     </a>
@@ -454,36 +488,56 @@
     <script>
 
         const mobileMenuButton =
-            document.getElementById("mobile-menu-button");
+            document.getElementById(
+                "mobile-menu-button"
+            );
 
         const mobileCloseButton =
-            document.getElementById("mobile-close-button");
+            document.getElementById(
+                "mobile-close-button"
+            );
 
         const mobileMenuOverlay =
-            document.getElementById("mobile-menu-overlay");
+            document.getElementById(
+                "mobile-menu-overlay"
+            );
 
         const mobileSidebar =
-            document.querySelector(".sidebar");
+            document.querySelector(
+                ".sidebar"
+            );
 
 
         function openMobileMenu() {
 
-            mobileSidebar.classList.add("mobile-open");
+            mobileSidebar.classList.add(
+                "mobile-open"
+            );
 
-            mobileMenuButton.classList.add("hidden");
+            mobileMenuButton.classList.add(
+                "hidden"
+            );
 
-            mobileMenuOverlay.classList.add("show");
+            mobileMenuOverlay.classList.add(
+                "show"
+            );
 
         }
 
 
         function closeMobileMenu() {
 
-            mobileSidebar.classList.remove("mobile-open");
+            mobileSidebar.classList.remove(
+                "mobile-open"
+            );
 
-            mobileMenuButton.classList.remove("hidden");
+            mobileMenuButton.classList.remove(
+                "hidden"
+            );
 
-            mobileMenuOverlay.classList.remove("show");
+            mobileMenuOverlay.classList.remove(
+                "show"
+            );
 
         }
 
@@ -512,7 +566,9 @@
 
                 if (
                     event.key === "Escape" &&
-                    mobileSidebar.classList.contains("mobile-open")
+                    mobileSidebar.classList.contains(
+                        "mobile-open"
+                    )
                 ) {
 
                     closeMobileMenu();
@@ -524,6 +580,6 @@
 
     </script>
 
+
 </body>
 </html>
-```
