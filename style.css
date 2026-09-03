@@ -1,3 +1,4 @@
+```css
 /* =====================================================
    VOID — الهوية الرئيسية
 ===================================================== */
@@ -231,6 +232,16 @@ body {
 #site.show .sidebar {
     transform:
         translateX(0);
+}
+
+
+/* =====================================================
+   أزرار قائمة الهاتف
+===================================================== */
+
+.mobile-menu-button,
+.mobile-close-button {
+    display: none;
 }
 
 
@@ -1165,94 +1176,269 @@ body {
         overflow: hidden;
     }
 
+
+    /* =================================================
+       القائمة الجانبية — درج من اليسار
+    ================================================== */
+
     .sidebar {
-        top: auto;
-        bottom: 0;
+        top: 0;
+        left: 0;
+        right: auto;
+        bottom: auto;
 
-        right: 0;
-
-        width: 100%;
-        height: 72px;
+        width: min(82vw, 300px);
+        height: 100vh;
 
         padding:
-            8px 10px;
+            35px 25px 25px;
 
-        flex-direction: row;
+        flex-direction: column;
 
-        align-items: center;
+        align-items: stretch;
 
         border-left: 0;
 
-        border-top:
+        border-right:
             1px solid #260000;
 
+        border-top: 0;
+
         transform:
-            translateY(100%);
+            translateX(-100%);
+
+        transition:
+            transform .45s
+            cubic-bezier(.77,0,.18,1);
     }
 
     #site.show .sidebar {
         transform:
-            translateY(0);
+            translateX(-100%);
     }
 
-    .logo,
-    .sidebar-divider,
-    .sidebar-bottom {
-        display: none;
+    #site.show .sidebar.mobile-open {
+        transform:
+            translateX(0);
+    }
+
+
+    /* =================================================
+       زر فتح القائمة
+    ================================================== */
+
+    .mobile-menu-button {
+        position: fixed;
+
+        top: 18px;
+        left: 18px;
+
+        width: 46px;
+        height: 46px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 5px;
+
+        padding: 0;
+
+        border:
+            1px solid #2d0000;
+
+        background:
+            rgba(5, 5, 5, .92);
+
+        cursor: pointer;
+
+        z-index: 250;
+
+        transition:
+            border-color .3s ease,
+            background .3s ease,
+            transform .3s ease;
+    }
+
+    .mobile-menu-button:hover {
+        border-color: #680000;
+
+        background:
+            rgba(90, 0, 0, .12);
+
+        transform:
+            translateY(-1px);
+    }
+
+    .mobile-menu-button span {
+        display: block;
+
+        width: 20px;
+        height: 1px;
+
+        background: #a0a0a0;
+
+        transition:
+            background .3s ease;
+    }
+
+    .mobile-menu-button:hover span {
+        background: #eeeeee;
+    }
+
+    .mobile-menu-button.hidden {
+        opacity: 0;
+
+        visibility: hidden;
+
+        pointer-events: none;
+    }
+
+
+    /* =================================================
+       زر إغلاق القائمة
+    ================================================== */
+
+    .mobile-close-button {
+        position: absolute;
+
+        top: 16px;
+        left: 16px;
+
+        width: 40px;
+        height: 40px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        padding: 0;
+
+        border:
+            1px solid #2d0000;
+
+        background:
+            rgba(5, 5, 5, .8);
+
+        color: #8d8d8d;
+
+        font-size: 20px;
+
+        line-height: 1;
+
+        cursor: pointer;
+
+        transition:
+            color .3s ease,
+            border-color .3s ease,
+            background .3s ease,
+            transform .3s ease;
+    }
+
+    .mobile-close-button:hover {
+        color: #eeeeee;
+
+        border-color: #680000;
+
+        background:
+            rgba(90, 0, 0, .12);
+
+        transform:
+            translateX(-2px);
+    }
+
+
+    /* =================================================
+       محتوى القائمة على الهاتف
+    ================================================== */
+
+    .logo {
+        text-align: right;
+
+        margin-top: 40px;
+    }
+
+    .sidebar-divider {
+        margin:
+            25px 0
+            30px;
     }
 
     .navigation {
         width: 100%;
 
-        flex-direction: row;
+        flex-direction: column;
 
-        justify-content: space-between;
+        justify-content: flex-start;
 
-        gap: 4px;
+        gap: 8px;
     }
 
     .nav-item {
         flex:
-            1 1 25%;
+            none;
 
-        min-height: 50px;
+        width: 100%;
 
-        justify-content: center;
+        min-height: 56px;
 
-        gap: 4px;
+        justify-content: flex-start;
 
-        padding: 0 4px;
+        gap: 14px;
 
-        border-right: 0;
+        padding: 0 15px;
+
+        border-right:
+            1px solid transparent;
+
+        border-bottom: 0;
     }
 
     .nav-item::before {
-        top: auto;
+        top: 50%;
 
-        right: 50%;
-        bottom: 0;
+        right: -1px;
+        bottom: auto;
 
-        width: 0;
-        height: 2px;
+        width: 2px;
+        height: 0;
 
         transform:
-            translateX(50%);
+            translateY(-50%);
     }
 
     .nav-item:hover,
     .nav-item.active {
-        transform: none;
+        transform:
+            translateX(-4px);
     }
 
     .nav-item:hover::before,
     .nav-item.active::before {
-        width: 55%;
-        height: 2px;
+        width: 2px;
+        height: 70%;
     }
 
     .nav-number {
-        display: none;
+        display: inline;
+
+        font-size: 11px;
     }
+
+    .sidebar-bottom {
+        display: flex;
+
+        margin-top: auto;
+    }
+
+
+    /* =================================================
+       المحتوى الرئيسي
+    ================================================== */
 
     .main-content {
         position: absolute;
@@ -1261,8 +1447,7 @@ body {
 
         width: 100%;
 
-        height:
-            calc(100vh - 72px);
+        height: 100vh;
 
         padding:
             35px 18px 70px;
@@ -1394,6 +1579,14 @@ body {
             25px 14px 65px;
     }
 
+    .mobile-menu-button {
+        top: 14px;
+        left: 14px;
+
+        width: 43px;
+        height: 43px;
+    }
+
     .cover-frame {
         width:
             min(78vw, 285px);
@@ -1429,3 +1622,4 @@ body {
             16px;
     }
 }
+```
