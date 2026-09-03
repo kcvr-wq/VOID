@@ -1,1 +1,1482 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>VOID — إعدادات الموقع</title>
+
+
+    <style>
+
+        /* =====================================================
+           الأساس
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+
+            scrollbar-width: none;
+        }
+
+
+        html::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+            display: none;
+        }
+
+
+        body {
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(90, 0, 0, 0.10),
+                    transparent 40%
+                ),
+                #050505;
+
+            color: #e8e8e8;
+
+            font-family:
+                "Segoe UI",
+                Tahoma,
+                Arial,
+                sans-serif;
+
+            overflow-x: hidden;
+
+            scrollbar-width: none;
+
+            transition:
+                font-family .25s ease;
+        }
+
+
+        body::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+            display: none;
+        }
+
+
+        /* =====================================================
+           القائمة الجانبية — اللابتوب
+        ===================================================== */
+
+        .sidebar {
+            position: fixed;
+
+            top: 0;
+            right: 0;
+
+            width: 285px;
+            height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+
+            padding:
+                55px
+                30px
+                30px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #090909 0%,
+                    #060606 100%
+                );
+
+            border-left:
+                1px solid #260000;
+
+            z-index: 1000;
+        }
+
+
+        /* =====================================================
+           الشعار
+        ===================================================== */
+
+        .logo {
+            color: #eeeeee;
+
+            font-size: 27px;
+
+            font-weight: 300;
+
+            letter-spacing: 0.25em;
+
+            text-align: right;
+
+            padding-right: 4px;
+        }
+
+
+        .logo span {
+            color: #720000;
+
+            text-shadow:
+                0 0 14px rgba(130, 0, 0, 0.35);
+        }
+
+
+        .sidebar-divider {
+            width: 100%;
+            height: 1px;
+
+            margin:
+                28px 0
+                35px;
+
+            background:
+                linear-gradient(
+                    to left,
+                    #650000,
+                    rgba(101, 0, 0, 0)
+                );
+        }
+
+
+        /* =====================================================
+           التنقل
+        ===================================================== */
+
+        .navigation {
+            display: flex;
+            flex-direction: column;
+
+            gap: 8px;
+        }
+
+
+        .nav-item {
+            position: relative;
+
+            min-height: 58px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 17px;
+
+            padding: 0 17px;
+
+            color: #777;
+
+            text-decoration: none;
+
+            border-right:
+                1px solid transparent;
+
+            transition:
+                color .35s ease,
+                background .35s ease,
+                border-color .35s ease,
+                transform .35s ease;
+        }
+
+
+        .nav-item::before {
+            content: "";
+
+            position: absolute;
+
+            right: -1px;
+            top: 50%;
+
+            width: 2px;
+            height: 0;
+
+            background: #760000;
+
+            transform:
+                translateY(-50%);
+
+            transition:
+                height .35s ease;
+        }
+
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: #eeeeee;
+
+            background:
+                linear-gradient(
+                    to left,
+                    rgba(100, 0, 0, 0.16),
+                    rgba(100, 0, 0, 0)
+                );
+        }
+
+
+        .nav-item:hover::before,
+        .nav-item.active::before {
+            height: 70%;
+        }
+
+
+        .nav-item:hover {
+            transform:
+                translateX(-4px);
+        }
+
+
+        .nav-number {
+            color: #4d4d4d;
+
+            font-family: monospace;
+
+            font-size: 11px;
+        }
+
+
+        .nav-item:hover .nav-number,
+        .nav-item.active .nav-number {
+            color: #700000;
+        }
+
+
+        /* =====================================================
+           أسفل القائمة
+        ===================================================== */
+
+        .sidebar-bottom {
+            margin-top: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding:
+                18px 5px 0;
+
+            border-top:
+                1px solid #171717;
+
+            color: #3d3d3d;
+
+            font-size: 10px;
+
+            letter-spacing: .2em;
+        }
+
+
+        .sidebar-status {
+            width: 6px;
+            height: 6px;
+
+            border-radius: 50%;
+
+            background: #650000;
+
+            box-shadow:
+                0 0 8px rgba(120, 0, 0, .7);
+        }
+
+
+        /* =====================================================
+           أزرار الهاتف
+        ===================================================== */
+
+        .mobile-menu-button,
+        .mobile-close-button,
+        .mobile-menu-overlay {
+            display: none;
+        }
+
+
+        /* =====================================================
+           المحتوى
+        ===================================================== */
+
+        .settings-wrapper {
+            width:
+                calc(100% - 285px);
+
+            min-height: 100vh;
+
+            margin-right:
+                285px;
+
+            padding:
+                50px 7vw 80px;
+        }
+
+
+        .settings-page {
+            width: 100%;
+
+            max-width: 900px;
+
+            margin: 0 auto;
+        }
+
+
+        /* =====================================================
+           الرأس
+        ===================================================== */
+
+        .page-header {
+            text-align: center;
+
+            margin-bottom: 55px;
+        }
+
+
+        .page-label {
+            display: block;
+
+            color: #650000;
+
+            font-size: 11px;
+
+            letter-spacing: .35em;
+
+            margin-bottom: 15px;
+        }
+
+
+        .page-title {
+            color: #eeeeee;
+
+            font-size:
+                clamp(38px, 7vw, 68px);
+
+            font-weight: 200;
+
+            letter-spacing: .08em;
+        }
+
+
+        .page-line {
+            width: 100px;
+
+            height: 1px;
+
+            margin:
+                24px auto 0;
+
+            background:
+                linear-gradient(
+                    to right,
+                    transparent,
+                    #720000,
+                    transparent
+                );
+        }
+
+
+        /* =====================================================
+           بطاقات الإعدادات
+        ===================================================== */
+
+        .settings-card {
+            position: relative;
+
+            padding:
+                28px;
+
+            margin-bottom:
+                16px;
+
+            border:
+                1px solid #1d1d1d;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(90, 0, 0, .07),
+                    rgba(255,255,255,.012)
+                );
+        }
+
+
+        .settings-card-header {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            margin-bottom: 24px;
+
+            padding-bottom:
+                18px;
+
+            border-bottom:
+                1px solid #171717;
+        }
+
+
+        .settings-card-title {
+            color: #dddddd;
+
+            font-size: 18px;
+
+            font-weight: 400;
+        }
+
+
+        .settings-card-number {
+            color: #650000;
+
+            font-family: monospace;
+
+            font-size: 11px;
+
+            letter-spacing: .12em;
+        }
+
+
+        .settings-description {
+            color: #666;
+
+            font-size: 13px;
+
+            line-height: 2;
+
+            margin-bottom:
+                20px;
+        }
+
+
+        /* =====================================================
+           اختيار الخط
+        ===================================================== */
+
+        .font-options {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 10px;
+        }
+
+
+        .font-option {
+            position: relative;
+
+            min-height: 76px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: flex-start;
+
+            justify-content: center;
+
+            gap: 6px;
+
+            padding:
+                0 18px;
+
+            border:
+                1px solid #222;
+
+            background:
+                rgba(255,255,255,.012);
+
+            color: #888;
+
+            cursor: pointer;
+
+            transition:
+                color .25s ease,
+                border-color .25s ease,
+                background .25s ease,
+                transform .25s ease;
+        }
+
+
+        .font-option:hover {
+            color: #eeeeee;
+
+            border-color:
+                #500000;
+
+            background:
+                rgba(90,0,0,.08);
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        .font-option.active {
+            color: #eeeeee;
+
+            border-color:
+                #750000;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(110,0,0,.16),
+                    rgba(255,255,255,.012)
+                );
+        }
+
+
+        .font-option.active::before {
+            content: "";
+
+            position: absolute;
+
+            right: 0;
+            top: 0;
+            bottom: 0;
+
+            width: 2px;
+
+            background:
+                #760000;
+        }
+
+
+        .font-name {
+            font-size: 14px;
+        }
+
+
+        .font-example {
+            color: #555;
+
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
+           رسالة الحفظ
+        ===================================================== */
+
+        .save-status {
+            min-height: 22px;
+
+            margin-top: 18px;
+
+            color: #620000;
+
+            font-size: 11px;
+
+            opacity: 0;
+
+            transition:
+                opacity .25s ease;
+        }
+
+
+        .save-status.show {
+            opacity: 1;
+        }
+
+
+        /* =====================================================
+           العودة
+        ===================================================== */
+
+        .back-button {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            width: fit-content;
+
+            min-height: 50px;
+
+            padding:
+                0 28px;
+
+            margin:
+                40px auto 0;
+
+            border:
+                1px solid #2d2d2d;
+
+            color: #999;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            background:
+                rgba(255,255,255,.01);
+
+            transition:
+                color .3s ease,
+                border-color .3s ease,
+                background .3s ease,
+                transform .3s ease;
+        }
+
+
+        .back-button:hover {
+            color: #eeeeee;
+
+            border-color: #650000;
+
+            background:
+                rgba(90,0,0,.10);
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        /* =====================================================
+           الخطوط
+        ===================================================== */
+
+        body.font-segoe {
+            font-family:
+                "Segoe UI",
+                Tahoma,
+                Arial,
+                sans-serif;
+        }
+
+
+        body.font-tahoma {
+            font-family:
+                Tahoma,
+                Arial,
+                sans-serif;
+        }
+
+
+        body.font-arial {
+            font-family:
+                Arial,
+                sans-serif;
+        }
+
+
+        /* =====================================================
+           الهاتف
+        ===================================================== */
+
+        @media (max-width: 800px) {
+
+            html {
+                overflow-x: hidden;
+            }
+
+
+            body {
+                overflow-x: hidden;
+            }
+
+
+            .sidebar {
+                top: 0;
+
+                right: 0;
+
+                left: auto;
+
+                width:
+                    min(82vw, 300px);
+
+                height: 100vh;
+
+                padding:
+                    35px 25px 25px;
+
+                border-left:
+                    1px solid #260000;
+
+                border-right: 0;
+
+                transform:
+                    translate3d(
+                        100%,
+                        0,
+                        0
+                    );
+
+                z-index: 220;
+
+                will-change:
+                    transform;
+
+                transition:
+                    transform .35s
+                    cubic-bezier(
+                        .22,
+                        .61,
+                        .36,
+                        1
+                    );
+            }
+
+
+            .sidebar.mobile-open {
+                transform:
+                    translate3d(
+                        0,
+                        0,
+                        0
+                    );
+            }
+
+
+            .mobile-menu-overlay {
+                position: fixed;
+
+                inset: 0;
+
+                display: block;
+
+                background:
+                    rgba(0,0,0,.55);
+
+                opacity: 0;
+
+                visibility: hidden;
+
+                pointer-events: none;
+
+                z-index: 210;
+
+                transition:
+                    opacity .25s ease,
+                    visibility .25s ease;
+            }
+
+
+            .mobile-menu-overlay.show {
+                opacity: 1;
+
+                visibility: visible;
+
+                pointer-events: auto;
+            }
+
+
+            .mobile-menu-button {
+                position: fixed;
+
+                top: 18px;
+                right: 18px;
+
+                width: 46px;
+                height: 46px;
+
+                display: flex;
+
+                flex-direction: column;
+
+                align-items: center;
+                justify-content: center;
+
+                gap: 5px;
+
+                padding: 0;
+
+                border:
+                    1px solid #4f0000;
+
+                border-radius: 2px;
+
+                background:
+                    rgba(5,5,5,.96);
+
+                cursor: pointer;
+
+                z-index: 250;
+            }
+
+
+            .mobile-menu-button span {
+                display: block;
+
+                width: 23px;
+                height: 2px;
+
+                border-radius: 1px;
+
+                background:
+                    #d4d4d4;
+            }
+
+
+            .mobile-menu-button.hidden {
+                opacity: 0;
+
+                visibility: hidden;
+
+                pointer-events: none;
+            }
+
+
+            .mobile-close-button {
+                position: absolute;
+
+                top: 17px;
+                right: 17px;
+
+                width: 44px;
+                height: 44px;
+
+                display: flex;
+
+                align-items: center;
+                justify-content: center;
+
+                padding: 0;
+
+                border:
+                    1px solid #5b0000;
+
+                border-radius: 3px;
+
+                background:
+                    linear-gradient(
+                        145deg,
+                        rgba(105,0,0,.2),
+                        rgba(255,255,255,.025)
+                    );
+
+                color:
+                    #d2d2d2;
+
+                font-size: 24px;
+
+                cursor: pointer;
+
+                z-index: 5;
+            }
+
+
+            .logo {
+                margin-top: 40px;
+            }
+
+
+            .navigation {
+                flex-direction: column;
+
+                gap: 8px;
+            }
+
+
+            .nav-item {
+                width: 100%;
+
+                min-height: 56px;
+
+                justify-content: flex-start;
+            }
+
+
+            .sidebar-bottom {
+                margin-top: auto;
+            }
+
+
+            /* =================================================
+               المحتوى
+            ================================================== */
+
+            .settings-wrapper {
+                width: 100%;
+
+                min-height: 100vh;
+
+                margin-right: 0;
+
+                padding:
+                    30px 14px 60px;
+            }
+
+
+            .page-header {
+                margin-bottom: 35px;
+            }
+
+
+            .settings-card {
+                padding:
+                    22px 18px;
+            }
+
+
+            .settings-card-title {
+                font-size: 17px;
+            }
+
+
+            .settings-description {
+                font-size: 12px;
+            }
+
+
+            .font-options {
+                grid-template-columns: 1fr;
+            }
+
+
+            .font-option {
+                min-height: 65px;
+            }
+
+
+            .back-button {
+                width: 100%;
+            }
+
+        }
+
+
+        /* =====================================================
+           الهاتف الصغير
+        ===================================================== */
+
+        @media (max-width: 450px) {
+
+            .mobile-menu-button {
+                top: 14px;
+                right: 14px;
+
+                width: 43px;
+                height: 43px;
+            }
+
+
+            .mobile-close-button {
+                top: 14px;
+                right: 14px;
+
+                width: 41px;
+                height: 41px;
+            }
+
+
+            .settings-wrapper {
+                padding:
+                    25px 12px 55px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         طبقة الهاتف
+    ====================================================== -->
+
+    <div
+        class="mobile-menu-overlay"
+        id="mobile-menu-overlay"
+    ></div>
+
+
+    <!-- =====================================================
+         زر القائمة — الهاتف
+    ====================================================== -->
+
+    <button
+        class="mobile-menu-button"
+        id="mobile-menu-button"
+        type="button"
+        aria-label="فتح القائمة"
+    >
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
+
+
+    <!-- =====================================================
+         القائمة الجانبية
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+
+        <button
+            class="mobile-close-button"
+            id="mobile-close-button"
+            type="button"
+            aria-label="إغلاق القائمة"
+        >
+            →
+        </button>
+
+
+        <div class="logo">
+            <span>V</span>OID
+        </div>
+
+
+        <div class="sidebar-divider"></div>
+
+
+        <nav class="navigation">
+
+
+            <a
+                href="../"
+                class="nav-item"
+            >
+                <span class="nav-number">
+                    01
+                </span>
+
+                <span>
+                    الرئيسية
+                </span>
+            </a>
+
+
+            <a
+                href="../chapters/"
+                class="nav-item"
+            >
+                <span class="nav-number">
+                    02
+                </span>
+
+                <span>
+                    الفصول
+                </span>
+            </a>
+
+
+            <a
+                href="#"
+                class="nav-item"
+            >
+                <span class="nav-number">
+                    03
+                </span>
+
+                <span>
+                    عالم الرواية
+                </span>
+            </a>
+
+
+            <a
+                href="./"
+                class="nav-item active"
+            >
+                <span class="nav-number">
+                    04
+                </span>
+
+                <span>
+                    إعدادات الموقع
+                </span>
+            </a>
+
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <span>
+                VOID
+            </span>
+
+            <span class="sidebar-status"></span>
+
+        </div>
+
+
+    </aside>
+
+
+    <!-- =====================================================
+         المحتوى
+    ====================================================== -->
+
+    <div class="settings-wrapper">
+
+
+        <main class="settings-page">
+
+
+            <!-- =================================================
+                 الرأس
+            ================================================== -->
+
+            <header class="page-header">
+
+                <span class="page-label">
+                    VOID
+                </span>
+
+
+                <h1 class="page-title">
+                    إعدادات الموقع
+                </h1>
+
+
+                <div class="page-line"></div>
+
+            </header>
+
+
+            <!-- =================================================
+                 إعدادات المظهر
+            ================================================== -->
+
+            <section class="settings-card">
+
+
+                <div class="settings-card-header">
+
+                    <h2 class="settings-card-title">
+                        المظهر والخط
+                    </h2>
+
+
+                    <span class="settings-card-number">
+                        01
+                    </span>
+
+                </div>
+
+
+                <p class="settings-description">
+                    اختر نوع الخط المستخدم في واجهة الموقع. سيتم حفظ اختيارك تلقائيًا على هذا الجهاز.
+                </p>
+
+
+                <div class="font-options">
+
+
+                    <button
+                        type="button"
+                        class="font-option"
+                        data-font="segoe"
+                    >
+
+                        <span class="font-name">
+                            Segoe UI
+                        </span>
+
+                        <span class="font-example">
+                            VOID — الرواية
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="font-option"
+                        data-font="tahoma"
+                    >
+
+                        <span class="font-name">
+                            Tahoma
+                        </span>
+
+                        <span class="font-example">
+                            VOID — الرواية
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="font-option"
+                        data-font="arial"
+                    >
+
+                        <span class="font-name">
+                            Arial
+                        </span>
+
+                        <span class="font-example">
+                            VOID — الرواية
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+
+                <div
+                    class="save-status"
+                    id="save-status"
+                >
+                    تم حفظ اختيار الخط.
+                </div>
+
+
+            </section>
+
+
+            <!-- =================================================
+                 العودة
+            ================================================== -->
+
+            <a
+                href="../"
+                class="back-button"
+            >
+                العودة إلى الرئيسية
+            </a>
+
+
+        </main>
+
+
+    </div>
+
+
+    <!-- =====================================================
+         JavaScript
+    ====================================================== -->
+
+    <script>
+
+
+        /* =================================================
+           القائمة على الهاتف
+        ================================================= */
+
+        const mobileMenuButton =
+            document.getElementById(
+                "mobile-menu-button"
+            );
+
+
+        const mobileCloseButton =
+            document.getElementById(
+                "mobile-close-button"
+            );
+
+
+        const mobileMenuOverlay =
+            document.getElementById(
+                "mobile-menu-overlay"
+            );
+
+
+        const sidebar =
+            document.querySelector(
+                ".sidebar"
+            );
+
+
+        function openMobileMenu() {
+
+            sidebar.classList.add(
+                "mobile-open"
+            );
+
+            mobileMenuButton.classList.add(
+                "hidden"
+            );
+
+            mobileMenuOverlay.classList.add(
+                "show"
+            );
+
+        }
+
+
+        function closeMobileMenu() {
+
+            sidebar.classList.remove(
+                "mobile-open"
+            );
+
+            mobileMenuButton.classList.remove(
+                "hidden"
+            );
+
+            mobileMenuOverlay.classList.remove(
+                "show"
+            );
+
+        }
+
+
+        mobileMenuButton.addEventListener(
+            "click",
+            openMobileMenu
+        );
+
+
+        mobileCloseButton.addEventListener(
+            "click",
+            closeMobileMenu
+        );
+
+
+        mobileMenuOverlay.addEventListener(
+            "click",
+            closeMobileMenu
+        );
+
+
+        document.addEventListener(
+            "keydown",
+            (event) => {
+
+                if (
+                    event.key === "Escape" &&
+                    sidebar.classList.contains(
+                        "mobile-open"
+                    )
+                ) {
+
+                    closeMobileMenu();
+
+                }
+
+            }
+        );
+
+
+        /* =================================================
+           نظام الخط
+        ================================================== */
+
+        const fontOptions =
+            document.querySelectorAll(
+                ".font-option"
+            );
+
+
+        const saveStatus =
+            document.getElementById(
+                "save-status"
+            );
+
+
+        const savedFont =
+            localStorage.getItem(
+                "voidSiteFont"
+            ) || "segoe";
+
+
+        function applyFont(
+            fontName,
+            save = true
+        ) {
+
+            document.body.classList.remove(
+                "font-segoe",
+                "font-tahoma",
+                "font-arial"
+            );
+
+
+            document.body.classList.add(
+                `font-${fontName}`
+            );
+
+
+            fontOptions.forEach(
+                (option) => {
+
+                    option.classList.toggle(
+                        "active",
+                        option.dataset.font ===
+                            fontName
+                    );
+
+                }
+            );
+
+
+            if (save) {
+
+                localStorage.setItem(
+                    "voidSiteFont",
+                    fontName
+                );
+
+
+                saveStatus.classList.add(
+                    "show"
+                );
+
+
+                setTimeout(
+                    () => {
+
+                        saveStatus.classList.remove(
+                            "show"
+                        );
+
+                    },
+                    1500
+                );
+
+            }
+
+        }
+
+
+        fontOptions.forEach(
+            (option) => {
+
+                option.addEventListener(
+                    "click",
+                    () => {
+
+                        applyFont(
+                            option.dataset.font
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        applyFont(
+            savedFont,
+            false
+        );
+
+    </script>
+
+
+</body>
+</html>
