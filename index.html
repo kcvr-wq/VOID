@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -41,10 +42,38 @@
     <div id="site">
 
         <!-- =================================================
+             زر القائمة — الهاتف فقط
+        ================================================== -->
+
+        <button
+            class="mobile-menu-button"
+            id="mobile-menu-button"
+            aria-label="فتح القائمة"
+            onclick="document.querySelector('.sidebar').classList.add('mobile-open'); this.classList.add('hidden');"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+
+        <!-- =================================================
              القائمة الجانبية
         ================================================== -->
 
         <aside class="sidebar">
+
+            <!-- زر إغلاق القائمة — الهاتف فقط -->
+
+            <button
+                class="mobile-close-button"
+                id="mobile-close-button"
+                aria-label="إغلاق القائمة"
+                onclick="document.querySelector('.sidebar').classList.remove('mobile-open'); document.querySelector('.mobile-menu-button').classList.remove('hidden');"
+            >
+                ←
+            </button>
+
 
             <div class="logo">
                 <span>V</span>OID
@@ -357,3 +386,4 @@
 
 </body>
 </html>
+```
