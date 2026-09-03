@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -42,28 +41,29 @@
     <div id="site">
 
         <!-- =================================================
-             زر القائمة — الهاتف فقط
+             طبقة إغلاق القائمة — الهاتف فقط
         ================================================== -->
 
-  <button
-    class="mobile-menu-button"
-    id="mobile-menu-button"
-    aria-label="فتح القائمة"
-    onclick="document.querySelector('.sidebar').classList.add('mobile-open'); this.classList.add('hidden');"
->
-    <span></span>
-    <span></span>
-    <span></span>
-</button>
+        <div
+            class="mobile-menu-overlay"
+            id="mobile-menu-overlay"
+        ></div>
 
-<button
-    class="mobile-close-button"
-    id="mobile-close-button"
-    aria-label="إغلاق القائمة"
-    onclick="document.querySelector('.sidebar').classList.remove('mobile-open'); document.querySelector('.mobile-menu-button').classList.remove('hidden');"
->
-    →
-</button>
+
+        <!-- =================================================
+             زر فتح القائمة — الهاتف فقط
+        ================================================== -->
+
+        <button
+            class="mobile-menu-button"
+            id="mobile-menu-button"
+            type="button"
+            aria-label="فتح القائمة"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
 
         <!-- =================================================
@@ -77,10 +77,10 @@
             <button
                 class="mobile-close-button"
                 id="mobile-close-button"
+                type="button"
                 aria-label="إغلاق القائمة"
-                onclick="document.querySelector('.sidebar').classList.remove('mobile-open'); document.querySelector('.mobile-menu-button').classList.remove('hidden');"
             >
-                ←
+                →
             </button>
 
 
@@ -250,9 +250,14 @@
                     id="continue-card"
                 >
 
-                    <div class="continue-empty" id="continue-empty">
+                    <div
+                        class="continue-empty"
+                        id="continue-empty"
+                    >
 
-                        <span class="empty-symbol">VOID</span>
+                        <span class="empty-symbol">
+                            VOID
+                        </span>
 
                         <h4>
                             لم تبدأ القراءة بعد
@@ -371,7 +376,9 @@
             </section>
 
 
-            <!-- نهاية الصفحة -->
+            <!-- =================================================
+                 نهاية الصفحة
+            ================================================== -->
 
             <footer class="site-footer">
 
@@ -393,6 +400,83 @@
 
     <script src="script.js"></script>
 
+
+    <!-- =====================================================
+         التحكم بقائمة الهاتف
+    ====================================================== -->
+
+    <script>
+
+        const mobileMenuButton =
+            document.getElementById("mobile-menu-button");
+
+        const mobileCloseButton =
+            document.getElementById("mobile-close-button");
+
+        const mobileMenuOverlay =
+            document.getElementById("mobile-menu-overlay");
+
+        const mobileSidebar =
+            document.querySelector(".sidebar");
+
+
+        function openMobileMenu() {
+
+            mobileSidebar.classList.add("mobile-open");
+
+            mobileMenuButton.classList.add("hidden");
+
+            mobileMenuOverlay.classList.add("show");
+
+        }
+
+
+        function closeMobileMenu() {
+
+            mobileSidebar.classList.remove("mobile-open");
+
+            mobileMenuButton.classList.remove("hidden");
+
+            mobileMenuOverlay.classList.remove("show");
+
+        }
+
+
+        mobileMenuButton.addEventListener(
+            "click",
+            openMobileMenu
+        );
+
+
+        mobileCloseButton.addEventListener(
+            "click",
+            closeMobileMenu
+        );
+
+
+        mobileMenuOverlay.addEventListener(
+            "click",
+            closeMobileMenu
+        );
+
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Escape" &&
+                    mobileSidebar.classList.contains("mobile-open")
+                ) {
+
+                    closeMobileMenu();
+
+                }
+
+            }
+        );
+
+    </script>
+
 </body>
 </html>
-```
