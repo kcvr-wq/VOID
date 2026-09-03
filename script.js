@@ -8,8 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
        العناصر
     ================================================= */
 
-    const intro = document.getElementById("intro");
-    const site = document.getElementById("site");
+    const intro =
+        document.getElementById("intro");
+
+    const site =
+        document.getElementById("site");
 
     const navItems =
         document.querySelectorAll(".nav-item");
@@ -31,6 +34,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const progressFill =
         document.getElementById("progress-fill");
+
+    const primaryButton =
+        document.querySelector(".primary-button");
 
 
     /* =================================================
@@ -54,6 +60,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =================================================
+       زر ابدأ القراءة
+       
+       حاليًا يفتح الفصل الأول.
+       لاحقًا سنربطه بنظام الفصول الحقيقي.
+    ================================================= */
+
+    if (primaryButton) {
+
+        primaryButton.addEventListener(
+            "click",
+            (event) => {
+
+                event.preventDefault();
+
+                window.location.href =
+                    "chapters/chapter-1/";
+
+            }
+        );
+
+    }
+
+
+    /* =================================================
        التنقل بالقائمة
     ================================================= */
 
@@ -62,7 +92,9 @@ document.addEventListener("DOMContentLoaded", () => {
         item.addEventListener("click", () => {
 
             navItems.forEach((nav) => {
+
                 nav.classList.remove("active");
+
             });
 
             item.classList.add("active");
@@ -74,8 +106,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =================================================
        نظام متابعة القراءة
-       
-       هذا النظام جاهز للفصول التي سنبنيها لاحقًا.
 
        البيانات المحفوظة ستكون بالشكل:
 
@@ -88,7 +118,9 @@ document.addEventListener("DOMContentLoaded", () => {
     ================================================= */
 
     const savedProgress =
-        localStorage.getItem("voidReadingProgress");
+        localStorage.getItem(
+            "voidReadingProgress"
+        );
 
 
     if (savedProgress) {
@@ -158,9 +190,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             continueButton.addEventListener(
                 "click",
-                () => {
+                (event) => {
 
                     if (!data.url) {
+
+                        event.preventDefault();
 
                         return;
 
@@ -183,7 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =================================================
        دالة حفظ تقدم القراءة
-       
+
        سنستخدمها داخل صفحات الفصول لاحقًا.
 
        مثال:
@@ -237,7 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =================================================
        منع أزرار الصفحات غير الموجودة حاليًا
-       
+
        عندما نبني الفصول سنضع الروابط الحقيقية.
     ================================================= */
 
