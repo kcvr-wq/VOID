@@ -45,16 +45,25 @@
              زر القائمة — الهاتف فقط
         ================================================== -->
 
-        <button
-            class="mobile-menu-button"
-            id="mobile-menu-button"
-            aria-label="فتح القائمة"
-            onclick="document.querySelector('.sidebar').classList.add('mobile-open'); this.classList.add('hidden');"
-        >
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+  <button
+    class="mobile-menu-button"
+    id="mobile-menu-button"
+    aria-label="فتح القائمة"
+    onclick="document.querySelector('.sidebar').classList.add('mobile-open'); this.classList.add('hidden');"
+>
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+<button
+    class="mobile-close-button"
+    id="mobile-close-button"
+    aria-label="إغلاق القائمة"
+    onclick="document.querySelector('.sidebar').classList.remove('mobile-open'); document.querySelector('.mobile-menu-button').classList.remove('hidden');"
+>
+    →
+</button>
 
 
         <!-- =================================================
