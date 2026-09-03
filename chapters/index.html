@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -29,6 +28,16 @@
 
         html {
             scroll-behavior: smooth;
+
+            /* إخفاء شريط التمرير */
+            scrollbar-width: none;
+        }
+
+
+        html::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+            display: none;
         }
 
 
@@ -52,6 +61,16 @@
                 sans-serif;
 
             overflow-x: hidden;
+
+            /* إخفاء شريط التمرير */
+            scrollbar-width: none;
+        }
+
+
+        body::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+            display: none;
         }
 
 
@@ -747,11 +766,29 @@
 
             html {
                 overflow-x: hidden;
+
+                scrollbar-width: none;
+            }
+
+
+            html::-webkit-scrollbar {
+                width: 0;
+                height: 0;
+                display: none;
             }
 
 
             body {
                 overflow-x: hidden;
+
+                scrollbar-width: none;
+            }
+
+
+            body::-webkit-scrollbar {
+                width: 0;
+                height: 0;
+                display: none;
             }
 
 
