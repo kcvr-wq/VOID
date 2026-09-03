@@ -4,6 +4,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
+
     /* =================================================
        العناصر
     ================================================= */
@@ -23,9 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const continueButton =
         document.getElementById("continue-button");
 
-    const continueEmpty =
-        document.getElementById("continue-empty");
-
     const lastChapterTitle =
         document.getElementById("last-chapter-title");
 
@@ -35,8 +33,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const progressFill =
         document.getElementById("progress-fill");
 
-    const primaryButton =
-        document.querySelector(".primary-button");
+    const latestChapterTitle =
+        document.getElementById(
+            "latest-chapter-title"
+        );
+
+    const latestButton =
+        document.getElementById(
+            "latest-button"
+        );
 
 
     /* =================================================
@@ -60,61 +65,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =================================================
-       زر ابدأ القراءة
-       
-       حاليًا يفتح الفصل الأول.
-       لاحقًا سنربطه بنظام الفصول الحقيقي.
-    ================================================= */
-
-    if (primaryButton) {
-
-        primaryButton.addEventListener(
-            "click",
-            (event) => {
-
-                event.preventDefault();
-
-                window.location.href =
-                    "chapters/chapter-1/";
-
-            }
-        );
-
-    }
-
-
-    /* =================================================
        التنقل بالقائمة
     ================================================= */
 
     navItems.forEach((item) => {
 
-        item.addEventListener("click", () => {
+        item.addEventListener(
+            "click",
+            () => {
 
-            navItems.forEach((nav) => {
+                navItems.forEach((nav) => {
 
-                nav.classList.remove("active");
+                    nav.classList.remove(
+                        "active"
+                    );
 
-            });
+                });
 
-            item.classList.add("active");
+                item.classList.add(
+                    "active"
+                );
 
-        });
+            }
+        );
 
     });
 
 
     /* =================================================
-       نظام متابعة القراءة
-
-       البيانات المحفوظة ستكون بالشكل:
-
-       {
-           chapter: "chapter-1",
-           title: "الفصل الأول",
-           progress: 72,
-           url: "chapters/chapter-1/"
-       }
+       تحميل تقدم القراءة
     ================================================= */
 
     const savedProgress =
@@ -128,14 +107,19 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
 
             const data =
-                JSON.parse(savedProgress);
+                JSON.parse(
+                    savedProgress
+                );
 
 
             /* =============================================
-               عرض آخر فصل
-            ============================================= */
+               عنوان آخر فصل تمت قراءته
+            ============================================== */
 
-            if (data.title) {
+            if (
+                data.title &&
+                lastChapterTitle
+            ) {
 
                 lastChapterTitle.textContent =
                     data.title;
@@ -145,10 +129,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             /* =============================================
                نسبة التقدم
-            ============================================= */
+            ============================================== */
 
             let progress =
                 Number(data.progress) || 0;
+
 
             progress =
                 Math.max(
@@ -160,48 +145,90 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
 
 
-            progressPercent.textContent =
-                `${progress}%`;
+            if (progressPercent) {
 
-            progressFill.style.width =
-                `${progress}%`;
-
-
-            /* =============================================
-               إظهار بطاقة المتابعة
-            ============================================= */
-
-            continueCard.classList.add(
-                "has-progress"
-            );
-
-
-            /* =============================================
-               زر المتابعة
-            ============================================= */
-
-            if (data.url) {
-
-                continueButton.href =
-                    data.url;
+                progressPercent.textContent =
+                    `${progress}%`;
 
             }
 
 
-            continueButton.addEventListener(
-                "click",
-                (event) => {
+            if (progressFill) {
 
-                    if (!data.url) {
+                progressFill.style.width =
+                    `${progress}%`;
 
-                        event.preventDefault();
+            }
 
-                        return;
 
-                    }
+            /* =============================================
+               إظهار بطاقة المتابعة
+            ============================================== */
 
-                }
-            );
+            if (continueCard) {
+
+                continueCard.classList.add(
+                    "has-progress"
+                );
+
+            }
+
+
+            /* =============================================
+               رابط متابعة القراءة
+            ============================================== */
+
+            if (
+                continueButton &&
+                data.url
+            ) {
+
+                continueButton.href =
+                    data.url;
+
+                continueButton.classList.remove(
+                    "disabled"
+                );
+
+                continueButton.removeAttribute(
+                    "aria-disabled"
+                );
+
+            }
+
+
+            /* =============================================
+               تحديث آخر فصل
+            ============================================== */
+
+            if (
+                latestChapterTitle &&
+                data.title
+            ) {
+
+                latestChapterTitle.textContent =
+                    data.title;
+
+            }
+
+
+            if (
+                latestButton &&
+                data.url
+            ) {
+
+                latestButton.href =
+                    data.url;
+
+                latestButton.classList.remove(
+                    "disabled"
+                );
+
+                latestButton.removeAttribute(
+                    "aria-disabled"
+                );
+
+            }
 
         } catch (error) {
 
@@ -217,17 +244,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =================================================
        دالة حفظ تقدم القراءة
-
-       سنستخدمها داخل صفحات الفصول لاحقًا.
-
-       مثال:
-
-       saveReadingProgress(
-           "chapter-1",
-           "الفصل الأول",
-           72,
-           "chapters/chapter-1/"
-       );
+       
+       سيتم استخدامها لاحقًا داخل صفحات الفصول.
     ================================================= */
 
     window.saveReadingProgress =
@@ -238,6 +256,17 @@ document.addEventListener("DOMContentLoaded", () => {
             url
         ) {
 
+
+            const cleanProgress =
+                Math.max(
+                    0,
+                    Math.min(
+                        100,
+                        Number(progress) || 0
+                    )
+                );
+
+
             const data = {
 
                 chapter:
@@ -247,13 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     title,
 
                 progress:
-                    Math.max(
-                        0,
-                        Math.min(
-                            100,
-                            Number(progress) || 0
-                        )
-                    ),
+                    cleanProgress,
 
                 url:
                     url || "#"
@@ -270,28 +293,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =================================================
-       منع أزرار الصفحات غير الموجودة حاليًا
-
-       عندما نبني الفصول سنضع الروابط الحقيقية.
+       منع الأزرار غير الجاهزة
     ================================================= */
 
-    const emptyLinks =
-        document.querySelectorAll(
+    document
+        .querySelectorAll(
             'a[href="#"]'
-        );
+        )
+        .forEach(
+            (link) => {
 
+                link.addEventListener(
+                    "click",
+                    (event) => {
 
-    emptyLinks.forEach((link) => {
+                        event.preventDefault();
 
-        link.addEventListener(
-            "click",
-            (event) => {
-
-                event.preventDefault();
+                    }
+                );
 
             }
         );
 
-    });
 
 });
