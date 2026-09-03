@@ -774,6 +774,7 @@
             html::-webkit-scrollbar {
                 width: 0;
                 height: 0;
+
                 display: none;
             }
 
@@ -788,6 +789,7 @@
             body::-webkit-scrollbar {
                 width: 0;
                 height: 0;
+
                 display: none;
             }
 
@@ -801,7 +803,9 @@
                 right: 0;
                 left: auto;
 
-                width: min(82vw, 300px);
+                width:
+                    min(82vw, 300px);
+
                 height: 100vh;
 
                 padding:
@@ -813,7 +817,11 @@
                 border-right: 0;
 
                 transform:
-                    translate3d(100%, 0, 0);
+                    translate3d(
+                        100%,
+                        0,
+                        0
+                    );
 
                 z-index: 220;
 
@@ -822,13 +830,22 @@
 
                 transition:
                     transform .35s
-                    cubic-bezier(.22,.61,.36,1);
+                    cubic-bezier(
+                        .22,
+                        .61,
+                        .36,
+                        1
+                    );
             }
 
 
             .sidebar.mobile-open {
                 transform:
-                    translate3d(0, 0, 0);
+                    translate3d(
+                        0,
+                        0,
+                        0
+                    );
             }
 
 
@@ -1249,9 +1266,11 @@
             </a>
 
 
+            <!-- تم إصلاح الرابط -->
+
             <a
-                href="#"
-                class="nav-item empty-link"
+                href="../settings/"
+                class="nav-item"
             >
 
                 <span class="nav-number">
