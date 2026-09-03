@@ -1,4 +1,3 @@
-```css
 /* =====================================================
    VOID — الهوية الرئيسية
 ===================================================== */
@@ -236,11 +235,12 @@ body {
 
 
 /* =====================================================
-   أزرار قائمة الهاتف
+   أزرار الهاتف
 ===================================================== */
 
 .mobile-menu-button,
-.mobile-close-button {
+.mobile-close-button,
+.mobile-menu-overlay {
     display: none;
 }
 
@@ -444,7 +444,6 @@ body {
     overflow-y: auto;
     overflow-x: hidden;
 
-    /* إخفاء شريط التمرير مع بقاء التمرير شغالًا */
     scrollbar-width: none;
 
     background:
@@ -469,9 +468,9 @@ body {
 }
 
 
-/* إخفاء شريط التمرير في Chrome / Edge / Safari */
-
 .main-content::-webkit-scrollbar {
+    width: 0;
+    height: 0;
     display: none;
 }
 
@@ -1170,14 +1169,22 @@ body {
 
     html {
         scroll-behavior: smooth;
+
+        overflow: hidden;
     }
 
     body {
         overflow: hidden;
+
+        position: fixed;
+
+        inset: 0;
     }
 
 
-    /* القائمة الجانبية — درج من اليمين */
+    /* =================================================
+       القائمة الجانبية — درج من اليمين
+    ================================================== */
 
     .sidebar {
         top: 0;
@@ -1205,6 +1212,8 @@ body {
         transform:
             translateX(100%);
 
+        z-index: 220;
+
         transition:
             transform .45s
             cubic-bezier(.77,0,.18,1);
@@ -1221,7 +1230,51 @@ body {
     }
 
 
-    /* زر فتح القائمة */
+    /* =================================================
+       طبقة خلفية القائمة
+    ================================================== */
+
+    .mobile-menu-overlay {
+        position: fixed;
+
+        inset: 0;
+
+        display: block;
+
+        background:
+            rgba(0, 0, 0, .48);
+
+        backdrop-filter:
+            blur(2px);
+
+        -webkit-backdrop-filter:
+            blur(2px);
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        pointer-events: none;
+
+        z-index: 210;
+
+        transition:
+            opacity .35s ease,
+            visibility .35s ease;
+    }
+
+    .mobile-menu-overlay.show {
+        opacity: 1;
+
+        visibility: visible;
+
+        pointer-events: auto;
+    }
+
+
+    /* =================================================
+       زر فتح القائمة
+    ================================================== */
 
     .mobile-menu-button {
         position: fixed;
@@ -1245,10 +1298,20 @@ body {
         padding: 0;
 
         border:
-            1px solid #2d0000;
+            1px solid #350000;
+
+        border-radius: 2px;
+
+        outline: none;
+
+        appearance: none;
+        -webkit-appearance: none;
 
         background:
-            rgba(5, 5, 5, .92);
+            rgba(5, 5, 5, .94);
+
+        box-shadow:
+            0 8px 25px rgba(0, 0, 0, .35);
 
         cursor: pointer;
 
@@ -1258,6 +1321,14 @@ body {
             border-color .3s ease,
             background .3s ease,
             transform .3s ease;
+    }
+
+    .mobile-menu-button:focus,
+    .mobile-menu-button:focus-visible {
+        outline: none;
+
+        box-shadow:
+            0 8px 25px rgba(0, 0, 0, .35);
     }
 
     .mobile-menu-button:hover {
@@ -1292,20 +1363,25 @@ body {
         visibility: hidden;
 
         pointer-events: none;
+
+        transform:
+            translateY(-5px);
     }
 
 
-    /* زر إغلاق القائمة */
+    /* =================================================
+       زر إغلاق القائمة
+    ================================================== */
 
     .mobile-close-button {
         position: absolute;
 
-        top: 16px;
-        right: 16px;
+        top: 17px;
+        right: 17px;
         left: auto;
 
-        width: 40px;
-        height: 40px;
+        width: 42px;
+        height: 42px;
 
         display: flex;
 
@@ -1315,18 +1391,41 @@ body {
         padding: 0;
 
         border:
-            1px solid #2d0000;
+            1px solid #420000;
+
+        border-radius: 2px;
+
+        outline: none;
+
+        appearance: none;
+        -webkit-appearance: none;
 
         background:
-            rgba(5, 5, 5, .8);
+            linear-gradient(
+                145deg,
+                rgba(100, 0, 0, .16),
+                rgba(255, 255, 255, .02)
+            );
 
-        color: #8d8d8d;
+        color: #b9b9b9;
 
-        font-size: 20px;
+        font-family:
+            "Segoe UI",
+            Tahoma,
+            Arial,
+            sans-serif;
+
+        font-size: 21px;
 
         line-height: 1;
 
         cursor: pointer;
+
+        box-shadow:
+            inset 0 0 0 1px rgba(120, 0, 0, .05),
+            0 5px 18px rgba(0, 0, 0, .25);
+
+        z-index: 2;
 
         transition:
             color .3s ease,
@@ -1335,20 +1434,31 @@ body {
             transform .3s ease;
     }
 
+    .mobile-close-button:focus,
+    .mobile-close-button:focus-visible {
+        outline: none;
+    }
+
     .mobile-close-button:hover {
         color: #eeeeee;
 
-        border-color: #680000;
+        border-color: #760000;
 
         background:
-            rgba(90, 0, 0, .12);
+            linear-gradient(
+                145deg,
+                rgba(110, 0, 0, .25),
+                rgba(255, 255, 255, .03)
+            );
 
         transform:
             translateX(2px);
     }
 
 
-    /* محتوى القائمة */
+    /* =================================================
+       محتوى القائمة على الهاتف
+    ================================================== */
 
     .logo {
         text-align: right;
@@ -1429,11 +1539,14 @@ body {
     }
 
 
-    /* المحتوى الرئيسي */
+    /* =================================================
+       المحتوى الرئيسي
+    ================================================== */
 
     .main-content {
         position: absolute;
 
+        top: 0;
         right: 0;
 
         width: 100%;
@@ -1442,6 +1555,20 @@ body {
 
         padding:
             35px 18px 70px;
+
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        scrollbar-width: none;
+
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .main-content::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+
+        display: none;
     }
 
     .hero-section {
@@ -1577,6 +1704,14 @@ body {
 
         width: 43px;
         height: 43px;
+    }
+
+    .mobile-close-button {
+        top: 14px;
+        right: 14px;
+
+        width: 40px;
+        height: 40px;
     }
 
     .cover-frame {
