@@ -13,6 +13,27 @@
     <title>VOID — الفصول</title>
 
 
+    <!-- =====================================================
+         خط Amiri
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap"
+        rel="stylesheet"
+    >
+
+
     <style>
 
         /* =====================================================
@@ -29,7 +50,6 @@
         html {
             scroll-behavior: smooth;
 
-            /* إخفاء شريط التمرير */
             scrollbar-width: none;
         }
 
@@ -62,8 +82,12 @@
 
             overflow-x: hidden;
 
-            /* إخفاء شريط التمرير */
             scrollbar-width: none;
+
+            transition:
+                background .35s ease,
+                color .35s ease,
+                font-family .25s ease;
         }
 
 
@@ -71,6 +95,27 @@
             width: 0;
             height: 0;
             display: none;
+        }
+
+
+        /* =====================================================
+           خط Amiri
+        ===================================================== */
+
+        body.site-font-amiri {
+            font-family:
+                "Amiri",
+                serif;
+        }
+
+
+        body.site-font-amiri
+        button,
+        body.site-font-amiri
+        a {
+            font-family:
+                "Amiri",
+                serif;
         }
 
 
@@ -106,10 +151,16 @@
                 1px solid #260000;
 
             z-index: 1000;
+
+            transition:
+                background .35s ease,
+                border-color .35s ease;
         }
 
 
-        /* الشعار */
+        /* =====================================================
+           الشعار
+        ===================================================== */
 
         .logo {
             color: #eeeeee;
@@ -134,7 +185,9 @@
         }
 
 
-        /* الخط */
+        /* =====================================================
+           الخط
+        ===================================================== */
 
         .sidebar-divider {
             width: 100%;
@@ -759,6 +812,176 @@
 
 
         /* =====================================================
+           الوضع الفاتح
+        ===================================================== */
+
+        body.light-mode {
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(120, 0, 0, 0.06),
+                    transparent 40%
+                ),
+                #eeeeee;
+
+            color:
+                #202020;
+        }
+
+
+        body.light-mode .sidebar {
+            background:
+                linear-gradient(
+                    180deg,
+                    #f1f1f1 0%,
+                    #e8e8e8 100%
+                );
+
+            border-left:
+                1px solid #d2baba;
+        }
+
+
+        body.light-mode .logo {
+            color:
+                #202020;
+        }
+
+
+        body.light-mode .sidebar-divider {
+            background:
+                linear-gradient(
+                    to left,
+                    #900000,
+                    rgba(144, 0, 0, 0)
+                );
+        }
+
+
+        body.light-mode .nav-item {
+            color:
+                #777;
+        }
+
+
+        body.light-mode .nav-item:hover,
+        body.light-mode .nav-item.active {
+            color:
+                #202020;
+
+            background:
+                linear-gradient(
+                    to left,
+                    rgba(120, 0, 0, .07),
+                    transparent
+                );
+        }
+
+
+        body.light-mode .nav-number {
+            color:
+                #777;
+        }
+
+
+        body.light-mode .sidebar-bottom {
+            border-top:
+                1px solid #d7d7d7;
+
+            color:
+                #777;
+        }
+
+
+        body.light-mode .page-title {
+            color:
+                #202020;
+        }
+
+
+        body.light-mode .volume {
+            border-color:
+                #d8d8d8;
+
+            background:
+                rgba(255,255,255,.7);
+        }
+
+
+        body.light-mode .volume-header {
+            background:
+                linear-gradient(
+                    to left,
+                    rgba(120,0,0,.05),
+                    transparent
+                );
+
+            border-bottom:
+                1px solid #dddddd;
+        }
+
+
+        body.light-mode .volume-title {
+            color:
+                #202020;
+        }
+
+
+        body.light-mode .chapter-item {
+            border-color:
+                #d3d3d3;
+
+            background:
+                rgba(255,255,255,.65);
+
+            color:
+                #666;
+        }
+
+
+        body.light-mode .chapter-item:hover {
+            color:
+                #202020;
+
+            border-color:
+                #800000;
+
+            background:
+                rgba(120,0,0,.05);
+        }
+
+
+        body.light-mode .chapter-status {
+            color:
+                #777;
+        }
+
+
+        body.light-mode .back-button {
+            border-color:
+                #cfcfcf;
+
+            color:
+                #666;
+
+            background:
+                rgba(255,255,255,.65);
+        }
+
+
+        body.light-mode .back-button:hover {
+            color:
+                #222;
+
+            border-color:
+                #800000;
+
+            background:
+                rgba(120,0,0,.06);
+        }
+
+
+        /* =====================================================
            الهاتف
         ===================================================== */
 
@@ -1190,7 +1413,7 @@
 
     <!-- =====================================================
          القائمة الجانبية
-    ====================================================== -->
+    ===================================================== -->
 
     <aside class="sidebar">
 
@@ -1386,7 +1609,7 @@
                 <div class="chapters-list">
 
 
-                    <!-- الفصل الأول — جاهز للفتح -->
+                    <!-- الفصل الأول -->
 
                     <a
                         href="chapter-1.html"
@@ -1408,6 +1631,8 @@
                     </a>
 
 
+                    <!-- الفصل الثاني -->
+
                     <a
                         href="#"
                         class="chapter-item"
@@ -1427,6 +1652,8 @@
 
                     </a>
 
+
+                    <!-- الفصل الثالث -->
 
                     <a
                         href="#"
@@ -1448,6 +1675,8 @@
                     </a>
 
 
+                    <!-- الفصل الرابع -->
+
                     <a
                         href="#"
                         class="chapter-item"
@@ -1467,6 +1696,8 @@
 
                     </a>
 
+
+                    <!-- الفصل الخامس -->
 
                     <a
                         href="#"
@@ -1488,6 +1719,8 @@
                     </a>
 
 
+                    <!-- الفصل السادس -->
+
                     <a
                         href="#"
                         class="chapter-item"
@@ -1507,6 +1740,8 @@
 
                     </a>
 
+
+                    <!-- الفصل السابع -->
 
                     <a
                         href="#"
@@ -1528,6 +1763,8 @@
                     </a>
 
 
+                    <!-- الفصل الثامن -->
+
                     <a
                         href="#"
                         class="chapter-item"
@@ -1547,6 +1784,8 @@
 
                     </a>
 
+
+                    <!-- الفصل التاسع -->
 
                     <a
                         href="#"
@@ -1568,6 +1807,8 @@
                     </a>
 
 
+                    <!-- الفصل العاشر -->
+
                     <a
                         href="#"
                         class="chapter-item"
@@ -1587,6 +1828,8 @@
 
                     </a>
 
+
+                    <!-- الفصل الحادي عشر -->
 
                     <a
                         href="#"
@@ -1608,6 +1851,8 @@
                     </a>
 
 
+                    <!-- الفصل الثاني عشر -->
+
                     <a
                         href="#"
                         class="chapter-item"
@@ -1627,6 +1872,8 @@
 
                     </a>
 
+
+                    <!-- الفصل الثالث عشر -->
 
                     <a
                         href="#"
@@ -1648,6 +1895,8 @@
                     </a>
 
 
+                    <!-- الفصل الرابع عشر -->
+
                     <a
                         href="#"
                         class="chapter-item"
@@ -1667,6 +1916,8 @@
 
                     </a>
 
+
+                    <!-- الفصل الخامس عشر -->
 
                     <a
                         href="#"
@@ -1688,6 +1939,8 @@
                     </a>
 
 
+                    <!-- الفصل السادس عشر -->
+
                     <a
                         href="#"
                         class="chapter-item"
@@ -1707,6 +1960,8 @@
 
                     </a>
 
+
+                    <!-- الفصل السابع عشر -->
 
                     <a
                         href="#"
@@ -1728,6 +1983,8 @@
                     </a>
 
 
+                    <!-- الفصل الثامن عشر -->
+
                     <a
                         href="#"
                         class="chapter-item"
@@ -1748,6 +2005,8 @@
                     </a>
 
 
+                    <!-- الفصل التاسع عشر -->
+
                     <a
                         href="#"
                         class="chapter-item"
@@ -1767,6 +2026,8 @@
 
                     </a>
 
+
+                    <!-- الفصل العشرون -->
 
                     <a
                         href="#"
@@ -1819,6 +2080,63 @@
     <script>
 
         /* =================================================
+           إعدادات الموقع
+        ================================================= */
+
+        const savedTheme =
+            localStorage.getItem(
+                "voidSiteTheme"
+            ) || "dark";
+
+
+        const savedFont =
+            localStorage.getItem(
+                "voidSettingsFont"
+            ) || "segoe";
+
+
+        const siteFonts = {
+
+            segoe:
+                '"Segoe UI", Tahoma, Arial, sans-serif',
+
+            tahoma:
+                'Tahoma, Arial, sans-serif',
+
+            arial:
+                'Arial, sans-serif',
+
+            serif:
+                'Georgia, "Times New Roman", serif',
+
+            amiri:
+                '"Amiri", serif'
+
+        };
+
+
+        /* تطبيق الوضع */
+
+        document.body.classList.toggle(
+            "light-mode",
+            savedTheme === "light"
+        );
+
+
+        /* تطبيق خط الموقع */
+
+        document.body.style.fontFamily =
+            siteFonts[savedFont] ||
+            siteFonts.segoe;
+
+
+        document.body.classList.toggle(
+            "site-font-amiri",
+            savedFont === "amiri"
+        );
+
+
+        /* =================================================
            المجلد
         ================================================= */
 
@@ -1826,6 +2144,7 @@
             document.getElementById(
                 "volume-1"
             );
+
 
         const volumeHeader =
             document.getElementById(
@@ -1854,15 +2173,18 @@
                 "mobile-menu-button"
             );
 
+
         const mobileCloseButton =
             document.getElementById(
                 "mobile-close-button"
             );
 
+
         const mobileMenuOverlay =
             document.getElementById(
                 "mobile-menu-overlay"
             );
+
 
         const sidebar =
             document.querySelector(
@@ -1876,9 +2198,11 @@
                 "mobile-open"
             );
 
+
             mobileMenuButton.classList.add(
                 "hidden"
             );
+
 
             mobileMenuOverlay.classList.add(
                 "show"
@@ -1893,9 +2217,11 @@
                 "mobile-open"
             );
 
+
             mobileMenuButton.classList.remove(
                 "hidden"
             );
+
 
             mobileMenuOverlay.classList.remove(
                 "show"
@@ -1924,7 +2250,7 @@
 
         /* =================================================
            الروابط غير الجاهزة
-        ================================================== */
+        ================================================= */
 
         document
             .querySelectorAll(".empty-link")
@@ -1945,7 +2271,9 @@
 
 
         document
-            .querySelectorAll(".chapter-item[href='#']")
+            .querySelectorAll(
+                ".chapter-item[href='#']"
+            )
             .forEach(
                 (link) => {
 
@@ -1964,7 +2292,7 @@
 
         /* =================================================
            إغلاق القائمة بزر ESC
-        ================================================== */
+        ================================================= */
 
         document.addEventListener(
             "keydown",
