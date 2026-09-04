@@ -2,180 +2,492 @@
    VOID — النظام الرئيسي
 ===================================================== */
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
 
 
-    /* =================================================
-       العناصر
-    ================================================= */
+        /* =================================================
+           إعدادات عامة
+        ================================================= */
 
-    const intro =
-        document.getElementById("intro");
+        const MAX_CHAPTERS = 50;
 
-    const site =
-        document.getElementById("site");
 
-    const navItems =
-        document.querySelectorAll(".nav-item");
+        /*
+           آخر فصل منشور حاليًا.
 
-    const continueCard =
-        document.getElementById("continue-card");
+           حاليًا يوجد الفصل 1 فقط.
+           عندما تضيف الفصل 2 لاحقًا،
+           نغيّر الرقم إلى 2 فقط.
+        */
 
-    const continueButton =
-        document.getElementById("continue-button");
+        const LATEST_PUBLISHED_CHAPTER = 1;
 
-    const lastChapterTitle =
-        document.getElementById("last-chapter-title");
 
-    const progressPercent =
-        document.getElementById("progress-percent");
+        /* =================================================
+           خريطة أسماء الفصول
+        ================================================= */
 
-    const progressFill =
-        document.getElementById("progress-fill");
+        const chapterNames = {
 
-    const latestChapterTitle =
-        document.getElementById(
-            "latest-chapter-title"
+            1: "الفصل الأول",
+            2: "الفصل الثاني",
+            3: "الفصل الثالث",
+            4: "الفصل الرابع",
+            5: "الفصل الخامس",
+            6: "الفصل السادس",
+            7: "الفصل السابع",
+            8: "الفصل الثامن",
+            9: "الفصل التاسع",
+            10: "الفصل العاشر",
+            11: "الفصل الحادي عشر",
+            12: "الفصل الثاني عشر",
+            13: "الفصل الثالث عشر",
+            14: "الفصل الرابع عشر",
+            15: "الفصل الخامس عشر",
+            16: "الفصل السادس عشر",
+            17: "الفصل السابع عشر",
+            18: "الفصل الثامن عشر",
+            19: "الفصل التاسع عشر",
+            20: "الفصل العشرون",
+            21: "الفصل الحادي والعشرون",
+            22: "الفصل الثاني والعشرون",
+            23: "الفصل الثالث والعشرون",
+            24: "الفصل الرابع والعشرون",
+            25: "الفصل الخامس والعشرون",
+            26: "الفصل السادس والعشرون",
+            27: "الفصل السابع والعشرون",
+            28: "الفصل الثامن والعشرون",
+            29: "الفصل التاسع والعشرون",
+            30: "الفصل الثلاثون",
+            31: "الفصل الحادي والثلاثون",
+            32: "الفصل الثاني والثلاثون",
+            33: "الفصل الثالث والثلاثون",
+            34: "الفصل الرابع والثلاثون",
+            35: "الفصل الخامس والثلاثون",
+            36: "الفصل السادس والثلاثون",
+            37: "الفصل السابع والثلاثون",
+            38: "الفصل الثامن والثلاثون",
+            39: "الفصل التاسع والثلاثون",
+            40: "الفصل الأربعون",
+            41: "الفصل الحادي والأربعون",
+            42: "الفصل الثاني والأربعون",
+            43: "الفصل الثالث والأربعون",
+            44: "الفصل الرابع والأربعون",
+            45: "الفصل الخامس والأربعون",
+            46: "الفصل السادس والأربعون",
+            47: "الفصل السابع والأربعون",
+            48: "الفصل الثامن والأربعون",
+            49: "الفصل التاسع والأربعون",
+            50: "الفصل الخمسون"
+
+        };
+
+
+        /* =================================================
+           إعدادات الموقع
+        ================================================= */
+
+        const savedTheme =
+            localStorage.getItem(
+                "voidSiteTheme"
+            ) || "dark";
+
+
+        const savedFont =
+            localStorage.getItem(
+                "voidSettingsFont"
+            ) || "segoe";
+
+
+        const fontMap = {
+
+            segoe:
+                '"Segoe UI", Tahoma, Arial, sans-serif',
+
+            tahoma:
+                'Tahoma, Arial, sans-serif',
+
+            arial:
+                'Arial, sans-serif',
+
+            serif:
+                'Georgia, "Times New Roman", serif',
+
+            amiri:
+                '"Amiri", serif'
+
+        };
+
+
+        document.body.classList.toggle(
+            "light-mode",
+            savedTheme === "light"
         );
 
-    const latestButton =
-        document.getElementById(
-            "latest-button"
+
+        document.body.style.fontFamily =
+            fontMap[savedFont] ||
+            fontMap.segoe;
+
+
+        document.body.classList.toggle(
+            "site-font-amiri",
+            savedFont === "amiri"
         );
 
 
-    /* =================================================
-       إعدادات الموقع
-       
-       يجب أن تعمل في جميع الصفحات التي تستدعي هذا الملف.
-    ================================================= */
+        /* =================================================
+           العناصر
+        ================================================= */
 
-    const savedTheme =
-        localStorage.getItem(
-            "voidSiteTheme"
-        ) || "dark";
+        const intro =
+            document.getElementById("intro");
 
 
-    const savedFont =
-        localStorage.getItem(
-            "voidSettingsFont"
-        ) || "segoe";
+        const site =
+            document.getElementById("site");
 
 
-    const fontMap = {
-
-        segoe:
-            '"Segoe UI", Tahoma, Arial, sans-serif',
-
-        tahoma:
-            'Tahoma, Arial, sans-serif',
-
-        arial:
-            'Arial, sans-serif',
-
-        serif:
-            'Georgia, "Times New Roman", serif',
-
-        amiri:
-            '"Amiri", serif'
-
-    };
+        const navItems =
+            document.querySelectorAll(".nav-item");
 
 
-    /* =================================================
-       تطبيق إعدادات الموقع
-    ================================================= */
-
-    document.body.classList.toggle(
-        "light-mode",
-        savedTheme === "light"
-    );
+        const continueCard =
+            document.getElementById("continue-card");
 
 
-    document.body.style.fontFamily =
-        fontMap[savedFont] ||
-        fontMap.segoe;
+        const continueButton =
+            document.getElementById("continue-button");
 
 
-    /* =================================================
-       شاشة الافتتاح
-    ================================================= */
-
-    if (
-        intro &&
-        site
-    ) {
-
-        setTimeout(() => {
-
-            intro.classList.add("hide");
-
-            setTimeout(() => {
-
-                site.classList.add("show");
-
-                document.body.style.overflow =
-                    "auto";
-
-            }, 900);
-
-        }, 4000);
-
-    }
+        const lastChapterTitle =
+            document.getElementById("last-chapter-title");
 
 
-    /* =================================================
-       التنقل بالقائمة
-    ================================================= */
+        const progressPercent =
+            document.getElementById("progress-percent");
 
-    navItems.forEach((item) => {
 
-        item.addEventListener(
-            "click",
-            () => {
+        const progressFill =
+            document.getElementById("progress-fill");
 
-                navItems.forEach((nav) => {
 
-                    nav.classList.remove(
-                        "active"
+        const latestChapterTitle =
+            document.getElementById(
+                "latest-chapter-title"
+            );
+
+
+        const latestButton =
+            document.getElementById(
+                "latest-button"
+            );
+
+
+        /* =================================================
+           شاشة الافتتاح
+        ================================================= */
+
+        if (
+            intro &&
+            site
+        ) {
+
+            document.body.style.overflow =
+                "hidden";
+
+
+            setTimeout(
+                () => {
+
+                    intro.classList.add(
+                        "hide"
                     );
 
-                });
 
-                item.classList.add(
-                    "active"
+                    setTimeout(
+                        () => {
+
+                            site.classList.add(
+                                "show"
+                            );
+
+                            document.body.style.overflow =
+                                "auto";
+
+                        },
+                        900
+                    );
+
+                },
+                4000
+            );
+
+        }
+
+
+        /* =================================================
+           التنقل
+        ================================================= */
+
+        navItems.forEach(
+            (item) => {
+
+                item.addEventListener(
+                    "click",
+                    () => {
+
+                        navItems.forEach(
+                            (nav) => {
+
+                                nav.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+                        item.classList.add(
+                            "active"
+                        );
+
+                    }
                 );
 
             }
         );
 
-    });
+
+        /* =================================================
+           أدوات تقدم القراءة
+        ================================================= */
+
+        function getAllReadingProgress() {
+
+            try {
+
+                const saved =
+                    localStorage.getItem(
+                        "voidReadingProgress"
+                    );
 
 
-    /* =================================================
-       تحميل تقدم القراءة
-    ================================================= */
+                if (!saved) {
 
-    const savedProgress =
-        localStorage.getItem(
-            "voidReadingProgress"
-        );
+                    return {};
+
+                }
 
 
-    if (savedProgress) {
+                const data =
+                    JSON.parse(
+                        saved
+                    );
 
-        try {
 
-            const data =
-                JSON.parse(
-                    savedProgress
+                if (
+                    typeof data !== "object" ||
+                    data === null ||
+                    Array.isArray(data)
+                ) {
+
+                    return {};
+
+                }
+
+
+                return data;
+
+            } catch (error) {
+
+                console.error(
+                    "تعذر تحميل تقدم القراءة:",
+                    error
+                );
+
+
+                return {};
+
+            }
+
+        }
+
+
+        function saveAllReadingProgress(
+            data
+        ) {
+
+            localStorage.setItem(
+                "voidReadingProgress",
+                JSON.stringify(data)
+            );
+
+        }
+
+
+        function getChapterProgress(
+            chapter
+        ) {
+
+            const allProgress =
+                getAllReadingProgress();
+
+
+            return (
+                allProgress[chapter] ||
+                {
+                    chapter:
+                        chapter,
+
+                    title:
+                        chapterNames[chapter] ||
+                        `الفصل ${chapter}`,
+
+                    progress:
+                        0,
+
+                    completed:
+                        false,
+
+                    url:
+                        `chapters/chapter-${chapter}.html`
+
+                }
+            );
+
+        }
+
+
+        window.saveReadingProgress =
+            function(
+                chapter,
+                title,
+                progress,
+                url
+            ) {
+
+                const allProgress =
+                    getAllReadingProgress();
+
+
+                let cleanProgress =
+                    Number(progress) || 0;
+
+
+                cleanProgress =
+                    Math.max(
+                        0,
+                        Math.min(
+                            100,
+                            cleanProgress
+                        )
+                    );
+
+
+                const previous =
+                    allProgress[chapter] ||
+                    {};
+
+
+                const completed =
+                    cleanProgress >= 100;
+
+
+                allProgress[chapter] = {
+
+                    chapter:
+                        chapter,
+
+                    title:
+                        title ||
+                        chapterNames[chapter] ||
+                        `الفصل ${chapter}`,
+
+                    progress:
+                        cleanProgress,
+
+                    completed:
+                        completed,
+
+                    url:
+                        url ||
+                        previous.url ||
+                        `chapters/chapter-${chapter}.html`
+
+                };
+
+
+                saveAllReadingProgress(
+                    allProgress
+                );
+
+            };
+
+
+        /* =================================================
+           آخر فصل تمت قراءته
+        ================================================= */
+
+        function getLatestReadChapter() {
+
+            const allProgress =
+                getAllReadingProgress();
+
+
+            const chapters =
+                Object.keys(
+                    allProgress
+                )
+                .map(
+                    Number
+                )
+                .filter(
+                    (number) =>
+                        Number.isInteger(number) &&
+                        number >= 1 &&
+                        number <= MAX_CHAPTERS
                 );
 
 
             if (
-                data.title &&
-                lastChapterTitle
+                chapters.length === 0
             ) {
+
+                return null;
+
+            }
+
+
+            chapters.sort(
+                (a, b) =>
+                    b - a
+            );
+
+
+            return chapters[0];
+
+        }
+
+
+        const latestReadChapter =
+            getLatestReadChapter();
+
+
+        if (
+            latestReadChapter &&
+            continueCard
+        ) {
+
+            const data =
+                getChapterProgress(
+                    latestReadChapter
+                );
+
+
+            if (lastChapterTitle) {
 
                 lastChapterTitle.textContent =
                     data.title;
@@ -183,24 +495,10 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            let progress =
-                Number(data.progress) || 0;
-
-
-            progress =
-                Math.max(
-                    0,
-                    Math.min(
-                        100,
-                        progress
-                    )
-                );
-
-
             if (progressPercent) {
 
                 progressPercent.textContent =
-                    `${progress}%`;
+                    `${Math.round(data.progress)}%`;
 
             }
 
@@ -208,18 +506,14 @@ document.addEventListener("DOMContentLoaded", () => {
             if (progressFill) {
 
                 progressFill.style.width =
-                    `${progress}%`;
+                    `${data.progress}%`;
 
             }
 
 
-            if (continueCard) {
-
-                continueCard.classList.add(
-                    "has-progress"
-                );
-
-            }
+            continueCard.classList.add(
+                "has-progress"
+            );
 
 
             if (
@@ -240,141 +534,89 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
 
-
-            if (
-                latestChapterTitle &&
-                data.title
-            ) {
-
-                latestChapterTitle.textContent =
-                    data.title;
-
-            }
+        }
 
 
-            if (
-                latestButton &&
-                data.url
-            ) {
+        /* =================================================
+           آخر فصل منشور
+        ================================================= */
 
-                latestButton.href =
-                    data.url;
+        if (
+            latestChapterTitle &&
+            latestButton &&
+            LATEST_PUBLISHED_CHAPTER > 0
+        ) {
 
-                latestButton.classList.remove(
-                    "disabled"
-                );
+            const latestTitle =
+                chapterNames[
+                    LATEST_PUBLISHED_CHAPTER
+                ] ||
+                `الفصل ${LATEST_PUBLISHED_CHAPTER}`;
 
-                latestButton.removeAttribute(
-                    "aria-disabled"
-                );
 
-            }
+            latestChapterTitle.textContent =
+                latestTitle;
 
-        } catch (error) {
 
-            console.error(
-                "تعذر قراءة بيانات التقدم:",
-                error
+            latestButton.href =
+                `chapters/chapter-${LATEST_PUBLISHED_CHAPTER}.html`;
+
+
+            latestButton.classList.remove(
+                "disabled"
+            );
+
+
+            latestButton.removeAttribute(
+                "aria-disabled"
             );
 
         }
 
-    }
 
+        /* =================================================
+           الروابط غير الجاهزة
+        ================================================= */
 
-    /* =================================================
-       دالة حفظ تقدم القراءة
-    ================================================= */
+        document
+            .querySelectorAll(
+                'a[href="#"]'
+            )
+            .forEach(
+                (link) => {
 
-    window.saveReadingProgress =
-        function (
-            chapter,
-            title,
-            progress,
-            url
-        ) {
+                    link.addEventListener(
+                        "click",
+                        (event) => {
 
-            const cleanProgress =
-                Math.max(
-                    0,
-                    Math.min(
-                        100,
-                        Number(progress) || 0
-                    )
-                );
+                            event.preventDefault();
 
+                        }
+                    );
 
-            const data = {
-
-                chapter:
-                    chapter,
-
-                title:
-                    title,
-
-                progress:
-                    cleanProgress,
-
-                url:
-                    url || "#"
-
-            };
-
-
-            localStorage.setItem(
-                "voidReadingProgress",
-                JSON.stringify(data)
+                }
             );
 
-        };
+
+        document
+            .querySelectorAll(
+                ".empty-link"
+            )
+            .forEach(
+                (link) => {
+
+                    link.addEventListener(
+                        "click",
+                        (event) => {
+
+                            event.preventDefault();
+
+                        }
+                    );
+
+                }
+            );
 
 
-    /* =================================================
-       منع الروابط غير الجاهزة
-       
-       لا نمنع روابط الملفات الحقيقية.
-    ================================================= */
-
-    document
-        .querySelectorAll(
-            'a[href="#"]'
-        )
-        .forEach(
-            (link) => {
-
-                link.addEventListener(
-                    "click",
-                    (event) => {
-
-                        event.preventDefault();
-
-                    }
-                );
-
-            }
-        );
-
-
-    /* =================================================
-       الروابط غير الجاهزة
-    ================================================= */
-
-    document
-        .querySelectorAll(".empty-link")
-        .forEach(
-            (link) => {
-
-                link.addEventListener(
-                    "click",
-                    (event) => {
-
-                        event.preventDefault();
-
-                    }
-                );
-
-            }
-        );
-
-
-});
+    }
+);
