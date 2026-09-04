@@ -45,23 +45,83 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =================================================
+       إعدادات الموقع
+       
+       يجب أن تعمل في جميع الصفحات التي تستدعي هذا الملف.
+    ================================================= */
+
+    const savedTheme =
+        localStorage.getItem(
+            "voidSiteTheme"
+        ) || "dark";
+
+
+    const savedFont =
+        localStorage.getItem(
+            "voidSettingsFont"
+        ) || "segoe";
+
+
+    const fontMap = {
+
+        segoe:
+            '"Segoe UI", Tahoma, Arial, sans-serif',
+
+        tahoma:
+            'Tahoma, Arial, sans-serif',
+
+        arial:
+            'Arial, sans-serif',
+
+        serif:
+            'Georgia, "Times New Roman", serif',
+
+        amiri:
+            '"Amiri", serif'
+
+    };
+
+
+    /* =================================================
+       تطبيق إعدادات الموقع
+    ================================================= */
+
+    document.body.classList.toggle(
+        "light-mode",
+        savedTheme === "light"
+    );
+
+
+    document.body.style.fontFamily =
+        fontMap[savedFont] ||
+        fontMap.segoe;
+
+
+    /* =================================================
        شاشة الافتتاح
     ================================================= */
 
-    setTimeout(() => {
-
-        intro.classList.add("hide");
+    if (
+        intro &&
+        site
+    ) {
 
         setTimeout(() => {
 
-            site.classList.add("show");
+            intro.classList.add("hide");
 
-            document.body.style.overflow =
-                "auto";
+            setTimeout(() => {
 
-        }, 900);
+                site.classList.add("show");
 
-    }, 4000);
+                document.body.style.overflow =
+                    "auto";
+
+            }, 900);
+
+        }, 4000);
+
+    }
 
 
     /* =================================================
@@ -112,10 +172,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
 
 
-            /* =============================================
-               عنوان آخر فصل تمت قراءته
-            ============================================== */
-
             if (
                 data.title &&
                 lastChapterTitle
@@ -126,10 +182,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
 
-
-            /* =============================================
-               نسبة التقدم
-            ============================================== */
 
             let progress =
                 Number(data.progress) || 0;
@@ -161,10 +213,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            /* =============================================
-               إظهار بطاقة المتابعة
-            ============================================== */
-
             if (continueCard) {
 
                 continueCard.classList.add(
@@ -173,10 +221,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
 
-
-            /* =============================================
-               رابط متابعة القراءة
-            ============================================== */
 
             if (
                 continueButton &&
@@ -196,10 +240,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
 
-
-            /* =============================================
-               تحديث آخر فصل
-            ============================================== */
 
             if (
                 latestChapterTitle &&
@@ -244,8 +284,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =================================================
        دالة حفظ تقدم القراءة
-       
-       سيتم استخدامها لاحقًا داخل صفحات الفصول.
     ================================================= */
 
     window.saveReadingProgress =
@@ -255,7 +293,6 @@ document.addEventListener("DOMContentLoaded", () => {
             progress,
             url
         ) {
-
 
             const cleanProgress =
                 Math.max(
@@ -293,13 +330,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =================================================
-       منع الأزرار غير الجاهزة
+       منع الروابط غير الجاهزة
+       
+       لا نمنع روابط الملفات الحقيقية.
     ================================================= */
 
     document
         .querySelectorAll(
             'a[href="#"]'
         )
+        .forEach(
+            (link) => {
+
+                link.addEventListener(
+                    "click",
+                    (event) => {
+
+                        event.preventDefault();
+
+                    }
+                );
+
+            }
+        );
+
+
+    /* =================================================
+       الروابط غير الجاهزة
+    ================================================= */
+
+    document
+        .querySelectorAll(".empty-link")
         .forEach(
             (link) => {
 
