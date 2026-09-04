@@ -13,9 +13,7 @@
     <title>VOID — الفصل الأول</title>
 
 
-    <!-- =====================================================
-         خط Amiri
-    ====================================================== -->
+    <!-- خط Amiri -->
 
     <link
         rel="preconnect"
@@ -46,14 +44,17 @@
             box-sizing: border-box;
         }
 
+
         html {
             scrollbar-width: none;
         }
+
 
         html::-webkit-scrollbar {
             width: 0;
             height: 0;
         }
+
 
         body {
             min-height: 100vh;
@@ -82,6 +83,7 @@
                 font-family .25s ease;
         }
 
+
         body::-webkit-scrollbar {
             width: 0;
             height: 0;
@@ -89,7 +91,7 @@
 
 
         /* =====================================================
-           خط الموقع — Amiri
+           خط الموقع
         ===================================================== */
 
         body.site-font-amiri {
@@ -106,6 +108,56 @@
             font-family:
                 "Amiri",
                 serif;
+        }
+
+
+        /* =====================================================
+           شريط تقدم القراءة
+        ===================================================== */
+
+        .reader-progress-track {
+
+            position: fixed;
+
+            top: 0;
+
+            right: 285px;
+
+            left: 0;
+
+            width:
+                calc(100% - 285px);
+
+            height: 3px;
+
+            background:
+                rgba(255,255,255,.025);
+
+            z-index: 1200;
+
+            pointer-events:
+                none;
+        }
+
+
+        .reader-progress-fill {
+
+            width: 0%;
+
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    to left,
+                    #7b0000,
+                    #490000
+                );
+
+            box-shadow:
+                0 0 8px rgba(110,0,0,.28);
+
+            transition:
+                width .12s linear;
         }
 
 
@@ -141,11 +193,8 @@
                 1px solid #260000;
 
             z-index: 1000;
-
-            transition:
-                background .35s ease,
-                border-color .35s ease;
         }
+
 
         .logo {
             color: #eeeeee;
@@ -161,12 +210,14 @@
             padding-right: 4px;
         }
 
+
         .logo span {
             color: #720000;
 
             text-shadow:
-                0 0 14px rgba(130, 0, 0, .35);
+                0 0 14px rgba(130,0,0,.35);
         }
+
 
         .sidebar-divider {
             width: 100%;
@@ -181,9 +232,10 @@
                 linear-gradient(
                     to left,
                     #650000,
-                    rgba(101, 0, 0, 0)
+                    rgba(101,0,0,0)
                 );
         }
+
 
         .navigation {
             display: flex;
@@ -192,6 +244,7 @@
 
             gap: 8px;
         }
+
 
         .nav-item {
             position: relative;
@@ -219,6 +272,7 @@
                 transform .35s ease;
         }
 
+
         .nav-item::before {
             content: "";
 
@@ -232,7 +286,8 @@
 
             height: 0;
 
-            background: #760000;
+            background:
+                #760000;
 
             transform:
                 translateY(-50%);
@@ -241,6 +296,7 @@
                 height .35s ease;
         }
 
+
         .nav-item:hover,
         .nav-item.active {
             color: #eeeeee;
@@ -248,20 +304,23 @@
             background:
                 linear-gradient(
                     to left,
-                    rgba(100, 0, 0, .16),
-                    rgba(100, 0, 0, 0)
+                    rgba(100,0,0,.16),
+                    rgba(100,0,0,0)
                 );
         }
+
 
         .nav-item:hover::before,
         .nav-item.active::before {
             height: 70%;
         }
 
+
         .nav-item:hover {
             transform:
                 translateX(-4px);
         }
+
 
         .nav-number {
             color: #4d4d4d;
@@ -270,6 +329,7 @@
 
             font-size: 11px;
         }
+
 
         .sidebar-bottom {
             margin-top: auto;
@@ -293,17 +353,18 @@
             letter-spacing: .2em;
         }
 
+
         .sidebar-status {
             width: 6px;
+
             height: 6px;
 
             border-radius: 50%;
 
-            background:
-                #650000;
+            background: #650000;
 
             box-shadow:
-                0 0 8px rgba(120, 0, 0, .7);
+                0 0 8px rgba(120,0,0,.7);
         }
 
 
@@ -338,6 +399,7 @@
             position: relative;
         }
 
+
         .reading-page {
 
             width: 100%;
@@ -361,6 +423,7 @@
             margin-bottom: 65px;
         }
 
+
         .chapter-label {
 
             display: block;
@@ -374,17 +437,19 @@
             margin-bottom: 15px;
         }
 
+
         .chapter-title {
 
             color: #eeeeee;
 
             font-size:
-                clamp(34px, 5vw, 62px);
+                clamp(34px,5vw,62px);
 
             font-weight: 200;
 
             letter-spacing: .04em;
         }
+
 
         .chapter-line {
 
@@ -420,9 +485,11 @@
             z-index: 900;
         }
 
+
         .reading-settings-button {
 
             width: 48px;
+
             height: 48px;
 
             display: flex;
@@ -435,7 +502,7 @@
                 1px solid #3c0000;
 
             background:
-                rgba(5, 5, 5, .94);
+                rgba(5,5,5,.94);
 
             color: #bbb;
 
@@ -450,6 +517,7 @@
                 transform .25s ease;
         }
 
+
         .reading-settings-button:hover {
 
             border-color:
@@ -459,7 +527,7 @@
                 #eeeeee;
 
             background:
-                rgba(100, 0, 0, .13);
+                rgba(100,0,0,.13);
 
             transform:
                 translateY(-2px);
@@ -486,7 +554,7 @@
                 1px solid #272727;
 
             background:
-                rgba(9, 9, 9, .97);
+                rgba(9,9,9,.97);
 
             box-shadow:
                 0 18px 45px rgba(0,0,0,.38);
@@ -506,6 +574,7 @@
                 transform .25s ease;
         }
 
+
         .reading-settings-panel.show {
 
             opacity: 1;
@@ -518,6 +587,7 @@
                 translateY(0);
         }
 
+
         .panel-title {
 
             color: #eeeeee;
@@ -526,6 +596,7 @@
 
             margin-bottom: 5px;
         }
+
 
         .panel-subtitle {
 
@@ -541,15 +612,18 @@
                 1px solid #1b1b1b;
         }
 
+
         .setting-group {
 
             margin-bottom: 22px;
         }
 
+
         .setting-group:last-child {
 
             margin-bottom: 0;
         }
+
 
         .setting-label {
 
@@ -572,10 +646,11 @@
             display: grid;
 
             grid-template-columns:
-                repeat(2, 1fr);
+                repeat(2,1fr);
 
             gap: 8px;
         }
+
 
         .font-option {
 
@@ -601,6 +676,7 @@
                 background .25s ease;
         }
 
+
         .font-option:hover {
 
             border-color:
@@ -609,6 +685,7 @@
             color:
                 #ddd;
         }
+
 
         .font-option.active {
 
@@ -624,7 +701,7 @@
 
 
         /* =====================================================
-           التحكم بالحجم والتباعد
+           الحجم والتباعد
         ===================================================== */
 
         .range-row {
@@ -636,9 +713,11 @@
             gap: 10px;
         }
 
+
         .range-button {
 
             width: 36px;
+
             height: 36px;
 
             flex-shrink: 0;
@@ -656,6 +735,7 @@
             font-size: 17px;
         }
 
+
         .range-button:hover {
 
             border-color:
@@ -664,6 +744,7 @@
             color:
                 #eee;
         }
+
 
         .range-value {
 
@@ -684,9 +765,10 @@
         .chapter-text {
 
             max-width:
-                var(--reader-width, 760px);
+                var(--reader-width,760px);
 
-            margin: 0 auto;
+            margin:
+                0 auto;
 
             font-family:
                 "Segoe UI",
@@ -695,10 +777,10 @@
                 sans-serif;
 
             font-size:
-                var(--reader-size, 19px);
+                var(--reader-size,19px);
 
             line-height:
-                var(--reader-spacing, 2.15);
+                var(--reader-spacing,2.15);
 
             text-align:
                 right;
@@ -714,15 +796,18 @@
                 color .35s ease;
         }
 
+
         .chapter-text p {
 
             margin-bottom:
                 1.8em;
         }
 
+
         .chapter-text p:last-child {
 
-            margin-bottom: 0;
+            margin-bottom:
+                0;
         }
 
 
@@ -767,7 +852,7 @@
             background:
                 radial-gradient(
                     circle at 50% 0%,
-                    rgba(120, 0, 0, .06),
+                    rgba(120,0,0,.06),
                     transparent 40%
                 ),
                 #eeeeee;
@@ -775,6 +860,7 @@
             color:
                 #202020;
         }
+
 
         body.light-mode .sidebar {
 
@@ -789,17 +875,13 @@
                 1px solid #d2baba;
         }
 
+
         body.light-mode .logo {
 
             color:
                 #202020;
         }
 
-        body.light-mode .nav-item {
-
-            color:
-                #777;
-        }
 
         body.light-mode .nav-item:hover,
         body.light-mode .nav-item.active {
@@ -815,6 +897,7 @@
                 );
         }
 
+
         body.light-mode .sidebar-bottom {
 
             border-top:
@@ -824,17 +907,20 @@
                 #777;
         }
 
+
         body.light-mode .chapter-title {
 
             color:
                 #202020;
         }
 
+
         body.light-mode .chapter-text {
 
             color:
                 #333;
         }
+
 
         body.light-mode .chapter-end {
 
@@ -844,6 +930,7 @@
             color:
                 #777;
         }
+
 
         body.light-mode .reading-settings-button {
 
@@ -857,6 +944,7 @@
                 #cfcfcf;
         }
 
+
         body.light-mode .reading-settings-panel {
 
             background:
@@ -866,11 +954,13 @@
                 #d4d4d4;
         }
 
+
         body.light-mode .panel-title {
 
             color:
                 #202020;
         }
+
 
         body.light-mode .panel-subtitle {
 
@@ -880,6 +970,7 @@
             border-color:
                 #ddd;
         }
+
 
         body.light-mode .font-option {
 
@@ -892,6 +983,7 @@
             color:
                 #666;
         }
+
 
         body.light-mode .range-button {
 
@@ -912,10 +1004,22 @@
 
         @media (max-width: 800px) {
 
+            .reader-progress-track {
+
+                right: 0;
+
+                left: 0;
+
+                width: 100%;
+
+                height: 3px;
+            }
+
+
             .sidebar {
 
                 width:
-                    min(82vw, 300px);
+                    min(82vw,300px);
 
                 padding:
                     35px 25px 25px;
@@ -944,6 +1048,7 @@
                     );
             }
 
+
             .sidebar.mobile-open {
 
                 transform:
@@ -954,61 +1059,85 @@
                     );
             }
 
+
             .mobile-menu-overlay {
 
-                position: fixed;
+                position:
+                    fixed;
 
-                inset: 0;
+                inset:
+                    0;
 
-                display: block;
+                display:
+                    block;
 
                 background:
                     rgba(0,0,0,.55);
 
-                opacity: 0;
+                opacity:
+                    0;
 
-                visibility: hidden;
+                visibility:
+                    hidden;
 
-                pointer-events: none;
+                pointer-events:
+                    none;
 
-                z-index: 210;
+                z-index:
+                    210;
 
                 transition:
                     opacity .25s ease;
             }
 
+
             .mobile-menu-overlay.show {
 
-                opacity: 1;
+                opacity:
+                    1;
 
-                visibility: visible;
+                visibility:
+                    visible;
 
-                pointer-events: auto;
+                pointer-events:
+                    auto;
             }
+
 
             .mobile-menu-button {
 
-                position: fixed;
+                position:
+                    fixed;
 
-                top: 18px;
+                top:
+                    18px;
 
-                right: 18px;
+                right:
+                    18px;
 
-                width: 46px;
+                width:
+                    46px;
 
-                height: 46px;
+                height:
+                    46px;
 
-                display: flex;
+                display:
+                    flex;
 
-                flex-direction: column;
+                flex-direction:
+                    column;
 
-                align-items: center;
+                align-items:
+                    center;
 
-                justify-content: center;
+                justify-content:
+                    center;
 
-                gap: 5px;
+                gap:
+                    5px;
 
-                padding: 0;
+                padding:
+                    0;
 
                 border:
                     1px solid #4f0000;
@@ -1016,51 +1145,71 @@
                 background:
                     rgba(5,5,5,.96);
 
-                cursor: pointer;
+                cursor:
+                    pointer;
 
-                z-index: 250;
+                z-index:
+                    250;
             }
+
 
             .mobile-menu-button span {
 
-                display: block;
+                display:
+                    block;
 
-                width: 23px;
+                width:
+                    23px;
 
-                height: 2px;
+                height:
+                    2px;
 
                 background:
                     #d4d4d4;
             }
 
+
             .mobile-menu-button.hidden {
 
-                opacity: 0;
+                opacity:
+                    0;
 
-                visibility: hidden;
+                visibility:
+                    hidden;
 
-                pointer-events: none;
+                pointer-events:
+                    none;
             }
+
 
             .mobile-close-button {
 
-                position: absolute;
+                position:
+                    absolute;
 
-                top: 17px;
+                top:
+                    17px;
 
-                right: 17px;
+                right:
+                    17px;
 
-                width: 44px;
+                width:
+                    44px;
 
-                height: 44px;
+                height:
+                    44px;
 
-                display: flex;
+                display:
+                    flex;
 
-                align-items: center;
+                align-items:
+                    center;
 
-                justify-content: center;
+                justify-content:
+                    center;
 
-                padding: 0;
+                padding:
+                    0;
 
                 border:
                     1px solid #5b0000;
@@ -1085,11 +1234,13 @@
                     5;
             }
 
+
             .logo {
 
                 margin-top:
                     40px;
             }
+
 
             .reading-wrapper {
 
@@ -1103,11 +1254,13 @@
                     95px 18px 70px;
             }
 
+
             .chapter-header {
 
                 margin-bottom:
                     45px;
             }
+
 
             .chapter-text {
 
@@ -1115,11 +1268,12 @@
                     100%;
 
                 font-size:
-                    var(--reader-size, 18px);
+                    var(--reader-size,18px);
 
                 line-height:
-                    var(--reader-spacing, 2.05);
+                    var(--reader-spacing,2.05);
             }
+
 
             .reading-tools {
 
@@ -1130,17 +1284,23 @@
                     18px;
             }
 
+
             .reading-settings-panel {
 
-                position: fixed;
+                position:
+                    fixed;
 
-                top: 78px;
+                top:
+                    78px;
 
-                left: 14px;
+                left:
+                    14px;
 
-                right: 14px;
+                right:
+                    14px;
 
-                width: auto;
+                width:
+                    auto;
 
                 max-height:
                     calc(100vh - 98px);
@@ -1148,32 +1308,47 @@
                 overflow-y:
                     auto;
             }
+
         }
 
+
+        /* =====================================================
+           الهاتف الصغير
+        ===================================================== */
 
         @media (max-width: 450px) {
 
             .mobile-menu-button {
 
-                top: 14px;
+                top:
+                    14px;
 
-                right: 14px;
+                right:
+                    14px;
 
-                width: 43px;
+                width:
+                    43px;
 
-                height: 43px;
+                height:
+                    43px;
             }
+
 
             .mobile-close-button {
 
-                top: 14px;
+                top:
+                    14px;
 
-                right: 14px;
+                right:
+                    14px;
 
-                width: 41px;
+                width:
+                    41px;
 
-                height: 41px;
+                height:
+                    41px;
             }
+
 
             .reading-tools {
 
@@ -1184,17 +1359,20 @@
                     14px;
             }
 
+
             .reading-wrapper {
 
                 padding:
                     85px 14px 60px;
             }
 
+
             .chapter-title {
 
                 font-size:
                     32px;
             }
+
         }
 
     </style>
@@ -1203,6 +1381,23 @@
 
 
 <body>
+
+
+    <!-- =====================================================
+         شريط التقدم
+    ====================================================== -->
+
+    <div
+        class="reader-progress-track"
+        aria-hidden="true"
+    >
+
+        <div
+            class="reader-progress-fill"
+            id="reader-progress-fill"
+        ></div>
+
+    </div>
 
 
     <!-- =====================================================
@@ -1356,18 +1551,18 @@
                 إعدادات القراءة
             </div>
 
+
             <div class="panel-subtitle">
                 تخص قراءة الفصول فقط
             </div>
 
-
-            <!-- الحجم -->
 
             <div class="setting-group">
 
                 <span class="setting-label">
                     حجم الخط
                 </span>
+
 
                 <div class="range-row">
 
@@ -1379,12 +1574,14 @@
                         −
                     </button>
 
+
                     <span
                         class="range-value"
                         id="font-size-value"
                     >
                         19px
                     </span>
+
 
                     <button
                         class="range-button"
@@ -1399,13 +1596,12 @@
             </div>
 
 
-            <!-- نوع الخط -->
-
             <div class="setting-group">
 
                 <span class="setting-label">
                     نوع خط القراءة
                 </span>
+
 
                 <div class="font-options">
 
@@ -1458,13 +1654,12 @@
             </div>
 
 
-            <!-- التباعد -->
-
             <div class="setting-group">
 
                 <span class="setting-label">
                     تباعد الأسطر
                 </span>
+
 
                 <div class="range-row">
 
@@ -1476,12 +1671,14 @@
                         −
                     </button>
 
+
                     <span
                         class="range-value"
                         id="spacing-value"
                     >
                         2.15
                     </span>
+
 
                     <button
                         class="range-button"
@@ -1515,9 +1712,11 @@
                     الفصل 01
                 </span>
 
+
                 <h1 class="chapter-title">
                     الفصل التجريبي
                 </h1>
+
 
                 <div class="chapter-line"></div>
 
@@ -1533,25 +1732,31 @@
                     هذا فصل تجريبي من VOID، وضعناه فقط لاختبار نظام القراءة وإعداداته قبل إدخال الفصول الحقيقية للرواية.
                 </p>
 
+
                 <p>
                     من هنا سنختبر حجم الخط ونوع الخط وتباعد الأسطر، وسنتأكد أن التغييرات تؤثر على نص الفصل فقط ولا تعبث بتصميم الموقع أو قائمته.
                 </p>
+
 
                 <p>
                     يمكنك فتح لوحة إعدادات القراءة من زر الترس الموجود في الجهة اليسرى. جرّب تغيير حجم الخط، ثم غيّر نوع الخط، وبعد ذلك عدّل تباعد الأسطر.
                 </p>
 
+
                 <p>
                     المفترض أن يبقى شكل VOID العام كما هو، بينما تتغير منطقة القراءة فقط. هذا هو الفصل التجريبي الذي سنستخدمه قبل بناء نظام الفصول الحقيقي.
                 </p>
+
 
                 <p>
                     عند الانتقال لاحقًا إلى فصل آخر، ستكون إعدادات القراءة نفسها مشتركة بين جميع الفصول، بينما تبقى إعدادات الموقع منفصلة عنها.
                 </p>
 
+
                 <p>
                     هذه الفقرة موجودة فقط حتى يكون لدينا نص كافٍ لاختبار القراءة على الهاتف والكمبيوتر ومعرفة كيف يتصرف التصميم مع أحجام مختلفة من الخطوط والمسافات.
                 </p>
+
 
             </article>
 
@@ -1569,6 +1774,22 @@
     <script>
 
         /* =====================================================
+           معلومات الفصل
+        ===================================================== */
+
+        const CURRENT_CHAPTER =
+            1;
+
+
+        const CURRENT_CHAPTER_TITLE =
+            "الفصل الأول";
+
+
+        const CURRENT_CHAPTER_URL =
+            "chapters/chapter-1.html";
+
+
+        /* =====================================================
            القائمة الهاتفية
         ===================================================== */
 
@@ -1577,15 +1798,18 @@
                 "mobile-menu-button"
             );
 
+
         const mobileCloseButton =
             document.getElementById(
                 "mobile-close-button"
             );
 
+
         const mobileMenuOverlay =
             document.getElementById(
                 "mobile-menu-overlay"
             );
+
 
         const sidebar =
             document.querySelector(
@@ -1599,13 +1823,16 @@
                 "mobile-open"
             );
 
+
             mobileMenuButton.classList.add(
                 "hidden"
             );
 
+
             mobileMenuOverlay.classList.add(
                 "show"
             );
+
         }
 
 
@@ -1615,13 +1842,16 @@
                 "mobile-open"
             );
 
+
             mobileMenuButton.classList.remove(
                 "hidden"
             );
 
+
             mobileMenuOverlay.classList.remove(
                 "show"
             );
+
         }
 
 
@@ -1630,10 +1860,12 @@
             openMobileMenu
         );
 
+
         mobileCloseButton.addEventListener(
             "click",
             closeMobileMenu
         );
+
 
         mobileMenuOverlay.addEventListener(
             "click",
@@ -1665,7 +1897,9 @@
         ===================================================== */
 
         document
-            .querySelectorAll(".empty-link")
+            .querySelectorAll(
+                ".empty-link"
+            )
             .forEach(
                 (link) => {
 
@@ -1718,15 +1952,11 @@
         };
 
 
-        /* تطبيق وضع الموقع */
-
         document.body.classList.toggle(
             "light-mode",
             savedTheme === "light"
         );
 
-
-        /* تطبيق خط الموقع */
 
         document.body.style.fontFamily =
             siteFonts[savedSiteFont] ||
@@ -1747,6 +1977,7 @@
             document.getElementById(
                 "reading-settings-button"
             );
+
 
         const readingSettingsPanel =
             document.getElementById(
@@ -1775,6 +2006,12 @@
         const fontOptions =
             document.querySelectorAll(
                 "[data-reader-font]"
+            );
+
+
+        const progressFill =
+            document.getElementById(
+                "reader-progress-fill"
             );
 
 
@@ -1821,7 +2058,7 @@
 
 
         /* =====================================================
-           فتح وإغلاق الإعدادات
+           فتح وإغلاق إعدادات القراءة
         ===================================================== */
 
         readingSettingsButton.addEventListener(
@@ -1830,14 +2067,18 @@
 
                 event.stopPropagation();
 
+
                 const isOpen =
                     readingSettingsPanel.classList.toggle(
                         "show"
                     );
 
+
                 readingSettingsButton.setAttribute(
                     "aria-expanded",
-                    isOpen ? "true" : "false"
+                    isOpen
+                        ? "true"
+                        : "false"
                 );
 
             }
@@ -1860,6 +2101,7 @@
                     readingSettingsPanel.classList.remove(
                         "show"
                     );
+
 
                     readingSettingsButton.setAttribute(
                         "aria-expanded",
@@ -1903,6 +2145,9 @@
                 String(readerSize)
             );
 
+
+            updateReadingProgress();
+
         }
 
 
@@ -1943,11 +2188,14 @@
                 String(readerSpacing)
             );
 
+
+            updateReadingProgress();
+
         }
 
 
         /* =====================================================
-           تطبيق نوع خط القراءة
+           تطبيق خط القراءة
         ===================================================== */
 
         function applyReaderFont() {
@@ -2074,14 +2322,287 @@
 
 
         /* =====================================================
+           حفظ تقدم القراءة
+        ===================================================== */
+
+        function loadReadingProgress() {
+
+            try {
+
+                const saved =
+                    localStorage.getItem(
+                        "voidReadingProgress"
+                    );
+
+
+                if (!saved) {
+
+                    return {
+                        progress: 0,
+                        completed: false
+                    };
+
+                }
+
+
+                const data =
+                    JSON.parse(
+                        saved
+                    );
+
+
+                if (
+                    data &&
+                    typeof data === "object" &&
+                    data[CURRENT_CHAPTER]
+                ) {
+
+                    return data[
+                        CURRENT_CHAPTER
+                    ];
+
+                }
+
+
+                return {
+                    progress: 0,
+                    completed: false
+                };
+
+            } catch (error) {
+
+                return {
+                    progress: 0,
+                    completed: false
+                };
+
+            }
+
+        }
+
+
+        function saveChapterProgress(
+            progress
+        ) {
+
+            let allProgress =
+                {};
+
+
+            try {
+
+                allProgress =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "voidReadingProgress"
+                        )
+                    ) || {};
+
+            } catch (error) {
+
+                allProgress =
+                    {};
+
+            }
+
+
+            const cleanProgress =
+                Math.max(
+                    0,
+                    Math.min(
+                        100,
+                        Number(progress) || 0
+                    )
+                );
+
+
+            const completed =
+                cleanProgress >= 100;
+
+
+            allProgress[
+                CURRENT_CHAPTER
+            ] = {
+
+                chapter:
+                    CURRENT_CHAPTER,
+
+                title:
+                    CURRENT_CHAPTER_TITLE,
+
+                progress:
+                    cleanProgress,
+
+                completed:
+                    completed,
+
+                url:
+                    CURRENT_CHAPTER_URL
+
+            };
+
+
+            localStorage.setItem(
+                "voidReadingProgress",
+                JSON.stringify(
+                    allProgress
+                )
+            );
+
+        }
+
+
+        /* =====================================================
+           حساب التقدم
+        ===================================================== */
+
+        let progressTicking =
+            false;
+
+
+        function updateReadingProgress() {
+
+            if (
+                progressTicking
+            ) {
+
+                return;
+
+            }
+
+
+            progressTicking =
+                true;
+
+
+            requestAnimationFrame(
+                () => {
+
+                    const scrollTop =
+                        window.scrollY ||
+                        document.documentElement.scrollTop;
+
+
+                    const viewportHeight =
+                        window.innerHeight;
+
+
+                    const documentHeight =
+                        document.documentElement.scrollHeight;
+
+
+                    const maxScroll =
+                        Math.max(
+                            1,
+                            documentHeight -
+                            viewportHeight
+                        );
+
+
+                    let progress =
+                        (scrollTop /
+                        maxScroll) *
+                        100;
+
+
+                    /*
+                       عندما يصل القارئ لنهاية الصفحة
+                       نعتبر الفصل مكتملًا بالكامل.
+                    */
+
+                    if (
+                        scrollTop +
+                        viewportHeight >=
+                        documentHeight - 8
+                    ) {
+
+                        progress =
+                            100;
+
+                    }
+
+
+                    progress =
+                        Math.max(
+                            0,
+                            Math.min(
+                                100,
+                                progress
+                            )
+                        );
+
+
+                    progressFill.style.width =
+                        `${progress}%`;
+
+
+                    saveChapterProgress(
+                        progress
+                    );
+
+
+                    progressTicking =
+                        false;
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           متابعة التمرير
+        ===================================================== */
+
+        window.addEventListener(
+            "scroll",
+            updateReadingProgress,
+            {
+                passive: true
+            }
+        );
+
+
+        window.addEventListener(
+            "resize",
+            updateReadingProgress
+        );
+
+
+        /* =====================================================
            تشغيل الإعدادات المحفوظة
         ===================================================== */
+
+        const savedProgress =
+            loadReadingProgress();
+
+
+        if (
+            progressFill
+        ) {
+
+            progressFill.style.width =
+                `${savedProgress.progress || 0}%`;
+
+        }
+
 
         applyReaderSize();
 
         applyReaderSpacing();
 
         applyReaderFont();
+
+
+        /*
+           تحديث أخير بعد اكتمال الصفحة.
+        */
+
+        setTimeout(
+            updateReadingProgress,
+            150
+        );
+
 
     </script>
 
