@@ -13,6 +13,27 @@
     <title>VOID — إعدادات الموقع</title>
 
 
+    <!-- =====================================================
+         خط Amiri
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap"
+        rel="stylesheet"
+    >
+
+
     <style>
 
         /* =====================================================
@@ -66,7 +87,8 @@
 
             transition:
                 background .35s ease,
-                color .35s ease;
+                color .35s ease,
+                font-family .25s ease;
         }
 
 
@@ -75,6 +97,27 @@
             height: 0;
 
             display: none;
+        }
+
+
+        /* =====================================================
+           خط Amiri
+        ===================================================== */
+
+        body.site-font-amiri {
+            font-family:
+                "Amiri",
+                serif;
+        }
+
+
+        body.site-font-amiri
+        button,
+        body.site-font-amiri
+        a {
+            font-family:
+                "Amiri",
+                serif;
         }
 
 
@@ -1194,7 +1237,7 @@
 
     <!-- =====================================================
          القائمة الجانبية
-    ====================================================== -->
+    ===================================================== -->
 
     <aside class="sidebar">
 
@@ -1254,7 +1297,7 @@
 
             <a
                 href="#"
-                class="nav-item"
+                class="nav-item empty-link"
             >
 
                 <span class="nav-number">
@@ -1437,12 +1480,14 @@
 
 
                 <p class="settings-description">
-                    اختر نوع الخط المستخدم في واجهة إعدادات الموقع.
+                    اختر نوع الخط المستخدم في واجهة الموقع.
                 </p>
 
 
                 <div class="option-grid">
 
+
+                    <!-- Segoe UI -->
 
                     <button
                         type="button"
@@ -1468,6 +1513,8 @@
                     </button>
 
 
+                    <!-- Tahoma -->
+
                     <button
                         type="button"
                         class="option-button"
@@ -1491,6 +1538,8 @@
 
                     </button>
 
+
+                    <!-- Arial -->
 
                     <button
                         type="button"
@@ -1516,6 +1565,8 @@
                     </button>
 
 
+                    <!-- Georgia -->
+
                     <button
                         type="button"
                         class="option-button"
@@ -1526,6 +1577,32 @@
 
                             <span class="option-title">
                                 Georgia
+                            </span>
+
+                            <span class="option-example">
+                                VOID — الرواية
+                            </span>
+
+                        </span>
+
+
+                        <span class="option-mark"></span>
+
+                    </button>
+
+
+                    <!-- Amiri -->
+
+                    <button
+                        type="button"
+                        class="option-button"
+                        data-font="amiri"
+                    >
+
+                        <span class="option-main">
+
+                            <span class="option-title">
+                                Amiri
                             </span>
 
                             <span class="option-example">
@@ -1762,31 +1839,44 @@
             ) || "segoe";
 
 
+        const fontMap = {
+
+            segoe:
+                '"Segoe UI", Tahoma, Arial, sans-serif',
+
+            tahoma:
+                'Tahoma, Arial, sans-serif',
+
+            arial:
+                'Arial, sans-serif',
+
+            serif:
+                'Georgia, "Times New Roman", serif',
+
+            amiri:
+                '"Amiri", serif'
+
+        };
+
+
         function applyFont(
             font,
             save = true
         ) {
 
-            const fontMap = {
-
-                segoe:
-                    '"Segoe UI", Tahoma, Arial, sans-serif',
-
-                tahoma:
-                    'Tahoma, Arial, sans-serif',
-
-                arial:
-                    'Arial, sans-serif',
-
-                serif:
-                    'Georgia, "Times New Roman", serif'
-
-            };
+            const selectedFont =
+                fontMap[font] ||
+                fontMap.segoe;
 
 
             document.body.style.fontFamily =
-                fontMap[font] ||
-                fontMap.segoe;
+                selectedFont;
+
+
+            document.body.classList.toggle(
+                "site-font-amiri",
+                font === "amiri"
+            );
 
 
             fontButtons.forEach(
@@ -1836,6 +1926,28 @@
             savedFont,
             false
         );
+
+
+        /* =================================================
+           الروابط غير الجاهزة
+        ================================================== */
+
+        document
+            .querySelectorAll(".empty-link")
+            .forEach(
+                (link) => {
+
+                    link.addEventListener(
+                        "click",
+                        (event) => {
+
+                            event.preventDefault();
+
+                        }
+                    );
+
+                }
+            );
 
 
     </script>
