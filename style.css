@@ -26,6 +26,10 @@ body {
         sans-serif;
 
     overflow: hidden;
+
+    transition:
+        background .35s ease,
+        color .35s ease;
 }
 
 
@@ -224,7 +228,11 @@ body {
 
     transition:
         transform 1.05s
-        cubic-bezier(.77,0,.18,1);
+        cubic-bezier(.77,0,.18,1),
+
+        background .35s ease,
+
+        border-color .35s ease;
 }
 
 
@@ -326,7 +334,6 @@ body {
     transition:
         color .35s ease,
         background .35s ease,
-        border-color .35s ease,
         transform .35s ease;
 }
 
@@ -473,8 +480,10 @@ body {
 
     transition:
         opacity 1s ease,
-        transform 1s ease;
+        transform 1s ease,
 
+        background .35s ease;
+    
     transition-delay:
         .35s;
 }
@@ -1081,7 +1090,9 @@ body {
 }
 
 
-/* زر غير فعّال */
+/* =====================================================
+   زر غير فعّال
+===================================================== */
 
 .latest-button.disabled,
 .continue-button.disabled {
@@ -1133,6 +1144,226 @@ body {
     font-size: 10px;
 
     letter-spacing: .1em;
+}
+
+
+/* =====================================================
+   الوضع الفاتح — إعدادات الموقع
+===================================================== */
+
+body.light-mode {
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(120, 0, 0, 0.06),
+            transparent 40%
+        ),
+        #eeeeee;
+
+    color:
+        #202020;
+}
+
+
+body.light-mode .sidebar {
+    background:
+        linear-gradient(
+            180deg,
+            #f1f1f1 0%,
+            #e8e8e8 100%
+        );
+
+    border-left:
+        1px solid #d2baba;
+}
+
+
+body.light-mode .logo {
+    color:
+        #202020;
+}
+
+
+body.light-mode .sidebar-divider {
+    background:
+        linear-gradient(
+            to left,
+            #900000,
+            rgba(144, 0, 0, 0)
+        );
+}
+
+
+body.light-mode .nav-item {
+    color:
+        #777;
+}
+
+
+body.light-mode .nav-item:hover,
+body.light-mode .nav-item.active {
+    color:
+        #202020;
+
+    background:
+        linear-gradient(
+            to left,
+            rgba(120, 0, 0, .07),
+            transparent
+        );
+}
+
+
+body.light-mode .nav-number {
+    color:
+        #777;
+}
+
+
+body.light-mode .sidebar-bottom {
+    border-top:
+        1px solid #d7d7d7;
+
+    color:
+        #777;
+}
+
+
+body.light-mode .main-content {
+    background:
+        radial-gradient(
+            circle at 50% 10%,
+            rgba(120, 0, 0, 0.04),
+            transparent 35%
+        ),
+        #eeeeee;
+}
+
+
+body.light-mode .hero-label {
+    color:
+        #666;
+}
+
+
+body.light-mode .hero-info h2 {
+    color:
+        #202020;
+}
+
+
+body.light-mode .hero-description {
+    color:
+        #666;
+}
+
+
+body.light-mode .section-heading {
+    border-bottom:
+        1px solid #d8d8d8;
+}
+
+
+body.light-mode .section-heading h3 {
+    color:
+        #202020;
+}
+
+
+body.light-mode .story-text p {
+    color:
+        #666;
+}
+
+
+body.light-mode .continue-card {
+    border-color:
+        #d8d8d8;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(120, 0, 0, .04),
+            rgba(255,255,255,.65)
+        );
+}
+
+
+body.light-mode .continue-empty h4,
+body.light-mode .continue-chapter h4 {
+    color:
+        #202020;
+}
+
+
+body.light-mode .continue-empty p {
+    color:
+        #666;
+}
+
+
+body.light-mode .progress-bar {
+    background:
+        #d8d8d8;
+}
+
+
+body.light-mode .latest-card {
+    border-color:
+        #d8d8d8;
+
+    background:
+        rgba(255,255,255,.65);
+}
+
+
+body.light-mode .latest-main h4 {
+    color:
+        #202020;
+}
+
+
+body.light-mode .latest-button {
+    color:
+        #666;
+
+    border-color:
+        #cfcfcf;
+}
+
+
+body.light-mode .site-footer {
+    border-top:
+        1px solid #d8d8d8;
+
+    color:
+        #777;
+}
+
+
+/* =====================================================
+   خط Amiri
+===================================================== */
+
+/*
+   يتم تفعيل هذا الخط عن طريق JavaScript
+   عندما تكون قيمة voidSettingsFont = amiri.
+*/
+
+body.site-font-amiri {
+    font-family:
+        "Amiri",
+        serif;
+}
+
+
+body.site-font-amiri input,
+body.site-font-amiri button,
+body.site-font-amiri textarea,
+body.site-font-amiri select {
+    font-family:
+        "Amiri",
+        serif;
 }
 
 
