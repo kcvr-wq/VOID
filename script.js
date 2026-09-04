@@ -188,6 +188,7 @@ document.addEventListener(
 
         /* =================================================
            شاشة الافتتاح
+           تظهر مرة واحدة فقط في جلسة التصفح
         ================================================= */
 
         if (
@@ -195,35 +196,66 @@ document.addEventListener(
             site
         ) {
 
-            document.body.style.overflow =
-                "hidden";
+            const introShown =
+                sessionStorage.getItem(
+                    "voidIntroShown"
+                );
 
 
-            setTimeout(
-                () => {
+            if (!introShown) {
 
-                    intro.classList.add(
-                        "hide"
-                    );
+                sessionStorage.setItem(
+                    "voidIntroShown",
+                    "true"
+                );
 
 
-                    setTimeout(
-                        () => {
+                document.body.style.overflow =
+                    "hidden";
 
-                            site.classList.add(
-                                "show"
-                            );
 
-                            document.body.style.overflow =
-                                "auto";
+                setTimeout(
+                    () => {
 
-                        },
-                        900
-                    );
+                        intro.classList.add(
+                            "hide"
+                        );
 
-                },
-                4000
-            );
+
+                        setTimeout(
+                            () => {
+
+                                site.classList.add(
+                                    "show"
+                                );
+
+                                document.body.style.overflow =
+                                    "auto";
+
+                            },
+                            900
+                        );
+
+                    },
+                    4000
+                );
+
+            } else {
+
+                intro.classList.add(
+                    "hide"
+                );
+
+
+                site.classList.add(
+                    "show"
+                );
+
+
+                document.body.style.overflow =
+                    "auto";
+
+            }
 
         }
 
