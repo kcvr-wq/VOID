@@ -12,6 +12,28 @@
 
     <title>VOID — الفصل الأول</title>
 
+
+    <!-- =====================================================
+         خط Amiri
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap"
+        rel="stylesheet"
+    >
+
+
     <style>
 
         /* =====================================================
@@ -56,12 +78,34 @@
 
             transition:
                 background .35s ease,
-                color .35s ease;
+                color .35s ease,
+                font-family .25s ease;
         }
 
         body::-webkit-scrollbar {
             width: 0;
             height: 0;
+        }
+
+
+        /* =====================================================
+           خط الموقع — Amiri
+        ===================================================== */
+
+        body.site-font-amiri {
+            font-family:
+                "Amiri",
+                serif;
+        }
+
+
+        body.site-font-amiri
+        button,
+        body.site-font-amiri
+        a {
+            font-family:
+                "Amiri",
+                serif;
         }
 
 
@@ -97,6 +141,10 @@
                 1px solid #260000;
 
             z-index: 1000;
+
+            transition:
+                background .35s ease,
+                border-color .35s ease;
         }
 
         .logo {
@@ -1241,7 +1289,7 @@
 
             <a
                 href="#"
-                class="nav-item"
+                class="nav-item empty-link"
             >
                 <span class="nav-number">
                     03
@@ -1369,6 +1417,7 @@
                         Segoe UI
                     </button>
 
+
                     <button
                         class="font-option"
                         type="button"
@@ -1376,6 +1425,7 @@
                     >
                         Tahoma
                     </button>
+
 
                     <button
                         class="font-option"
@@ -1385,12 +1435,22 @@
                         Arial
                     </button>
 
+
                     <button
                         class="font-option"
                         type="button"
                         data-reader-font="serif"
                     >
                         Georgia
+                    </button>
+
+
+                    <button
+                        class="font-option"
+                        type="button"
+                        data-reader-font="amiri"
+                    >
+                        Amiri
                     </button>
 
                 </div>
@@ -1601,11 +1661,29 @@
 
 
         /* =====================================================
+           الروابط غير الجاهزة
+        ===================================================== */
+
+        document
+            .querySelectorAll(".empty-link")
+            .forEach(
+                (link) => {
+
+                    link.addEventListener(
+                        "click",
+                        (event) => {
+
+                            event.preventDefault();
+
+                        }
+                    );
+
+                }
+            );
+
+
+        /* =====================================================
            إعدادات الموقع
-           نقرأ الوضع المحفوظ فقط.
-           
-           ملاحظة:
-           هذا لا يربط إعدادات الموقع بإعدادات القراءة.
         ===================================================== */
 
         const savedTheme =
@@ -1614,15 +1692,51 @@
             ) || "dark";
 
 
-        if (
+        const savedSiteFont =
+            localStorage.getItem(
+                "voidSettingsFont"
+            ) || "segoe";
+
+
+        const siteFonts = {
+
+            segoe:
+                '"Segoe UI", Tahoma, Arial, sans-serif',
+
+            tahoma:
+                'Tahoma, Arial, sans-serif',
+
+            arial:
+                'Arial, sans-serif',
+
+            serif:
+                'Georgia, "Times New Roman", serif',
+
+            amiri:
+                '"Amiri", serif'
+
+        };
+
+
+        /* تطبيق وضع الموقع */
+
+        document.body.classList.toggle(
+            "light-mode",
             savedTheme === "light"
-        ) {
+        );
 
-            document.body.classList.add(
-                "light-mode"
-            );
 
-        }
+        /* تطبيق خط الموقع */
+
+        document.body.style.fontFamily =
+            siteFonts[savedSiteFont] ||
+            siteFonts.segoe;
+
+
+        document.body.classList.toggle(
+            "site-font-amiri",
+            savedSiteFont === "amiri"
+        );
 
 
         /* =====================================================
@@ -1651,6 +1765,7 @@
                 "font-size-value"
             );
 
+
         const spacingValue =
             document.getElementById(
                 "spacing-value"
@@ -1675,7 +1790,10 @@
                 'Arial, sans-serif',
 
             serif:
-                'Georgia, "Times New Roman", serif'
+                'Georgia, "Times New Roman", serif',
+
+            amiri:
+                '"Amiri", serif'
 
         };
 
@@ -1769,13 +1887,16 @@
                     )
                 );
 
+
             chapterText.style.setProperty(
                 "--reader-size",
                 `${readerSize}px`
             );
 
+
             fontSizeValue.textContent =
                 `${readerSize}px`;
+
 
             localStorage.setItem(
                 "voidReaderSize",
@@ -1800,18 +1921,22 @@
                     )
                 );
 
+
             readerSpacing =
                 Math.round(
                     readerSpacing * 100
                 ) / 100;
+
 
             chapterText.style.setProperty(
                 "--reader-spacing",
                 readerSpacing
             );
 
+
             spacingValue.textContent =
                 readerSpacing.toFixed(2);
+
 
             localStorage.setItem(
                 "voidReaderSpacing",
