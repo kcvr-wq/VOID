@@ -13,9 +13,7 @@
     <title>VOID — الفصول</title>
 
 
-    <!-- =====================================================
-         خط Amiri
-    ====================================================== -->
+    <!-- خط Amiri -->
 
     <link
         rel="preconnect"
@@ -57,6 +55,7 @@
         html::-webkit-scrollbar {
             width: 0;
             height: 0;
+
             display: none;
         }
 
@@ -94,12 +93,13 @@
         body::-webkit-scrollbar {
             width: 0;
             height: 0;
+
             display: none;
         }
 
 
         /* =====================================================
-           خط Amiri
+           Amiri
         ===================================================== */
 
         body.site-font-amiri {
@@ -120,7 +120,7 @@
 
 
         /* =====================================================
-           القائمة الجانبية — اللابتوب
+           القائمة الجانبية
         ===================================================== */
 
         .sidebar {
@@ -151,16 +151,8 @@
                 1px solid #260000;
 
             z-index: 1000;
-
-            transition:
-                background .35s ease,
-                border-color .35s ease;
         }
 
-
-        /* =====================================================
-           الشعار
-        ===================================================== */
 
         .logo {
             color: #eeeeee;
@@ -169,7 +161,7 @@
 
             font-weight: 300;
 
-            letter-spacing: 0.25em;
+            letter-spacing: .25em;
 
             text-align: right;
 
@@ -181,16 +173,13 @@
             color: #720000;
 
             text-shadow:
-                0 0 14px rgba(130, 0, 0, 0.35);
+                0 0 14px rgba(130, 0, 0, .35);
         }
 
 
-        /* =====================================================
-           الخط
-        ===================================================== */
-
         .sidebar-divider {
             width: 100%;
+
             height: 1px;
 
             margin:
@@ -205,10 +194,6 @@
                 );
         }
 
-
-        /* =====================================================
-           التنقل
-        ===================================================== */
 
         .navigation {
             display: flex;
@@ -241,7 +226,6 @@
             transition:
                 color .35s ease,
                 background .35s ease,
-                border-color .35s ease,
                 transform .35s ease;
         }
 
@@ -274,7 +258,7 @@
             background:
                 linear-gradient(
                     to left,
-                    rgba(100, 0, 0, 0.16),
+                    rgba(100, 0, 0, .16),
                     rgba(100, 0, 0, 0)
                 );
         }
@@ -298,9 +282,6 @@
             font-family: monospace;
 
             font-size: 11px;
-
-            transition:
-                color .35s ease;
         }
 
 
@@ -309,10 +290,6 @@
             color: #700000;
         }
 
-
-        /* =====================================================
-           أسفل القائمة
-        ===================================================== */
 
         .sidebar-bottom {
             margin-top: auto;
@@ -333,7 +310,7 @@
 
             font-size: 10px;
 
-            letter-spacing: 0.2em;
+            letter-spacing: .2em;
         }
 
 
@@ -346,12 +323,12 @@
             background: #650000;
 
             box-shadow:
-                0 0 8px rgba(120, 0, 0, 0.7);
+                0 0 8px rgba(120,0,0,.7);
         }
 
 
         /* =====================================================
-           أزرار الهاتف
+           الهاتف
         ===================================================== */
 
         .mobile-menu-button,
@@ -362,7 +339,7 @@
 
 
         /* =====================================================
-           مساحة صفحة الفصول
+           الصفحة
         ===================================================== */
 
         .chapters-wrapper {
@@ -387,10 +364,6 @@
             margin: 0 auto;
         }
 
-
-        /* =====================================================
-           الرأس
-        ===================================================== */
 
         .page-header {
             text-align: center;
@@ -454,17 +427,13 @@
             background:
                 linear-gradient(
                     135deg,
-                    rgba(90, 0, 0, .07),
-                    rgba(255, 255, 255, .012)
+                    rgba(90,0,0,.07),
+                    rgba(255,255,255,.012)
                 );
 
             overflow: hidden;
         }
 
-
-        /* =====================================================
-           عنوان المجلد
-        ===================================================== */
 
         .volume-header {
             width: 100%;
@@ -483,7 +452,7 @@
             background:
                 linear-gradient(
                     to left,
-                    rgba(110, 0, 0, .12),
+                    rgba(110,0,0,.12),
                     transparent
                 );
 
@@ -503,15 +472,11 @@
             background:
                 linear-gradient(
                     to left,
-                    rgba(110, 0, 0, .18),
+                    rgba(110,0,0,.18),
                     transparent
                 );
         }
 
-
-        /* =====================================================
-           معلومات المجلد
-        ===================================================== */
 
         .volume-info {
             display: flex;
@@ -551,10 +516,6 @@
         }
 
 
-        /* =====================================================
-           سهم فتح المجلد
-        ===================================================== */
-
         .volume-arrow {
             width: 38px;
             height: 38px;
@@ -585,7 +546,7 @@
             border-color: #650000;
 
             background:
-                rgba(100, 0, 0, .10);
+                rgba(100,0,0,.10);
         }
 
 
@@ -598,7 +559,7 @@
             border-color: #650000;
 
             background:
-                rgba(100, 0, 0, .10);
+                rgba(100,0,0,.10);
         }
 
 
@@ -630,7 +591,7 @@
 
 
         .volume.open .chapters-list {
-            max-height: 1200px;
+            max-height: 5000px;
 
             opacity: 1;
 
@@ -705,7 +666,7 @@
             background:
                 linear-gradient(
                     to left,
-                    rgba(100, 0, 0, .10),
+                    rgba(100,0,0,.10),
                     rgba(255,255,255,.012)
                 );
 
@@ -720,10 +681,6 @@
         }
 
 
-        /* =====================================================
-           رقم الفصل
-        ===================================================== */
-
         .chapter-number {
             color: #650000;
 
@@ -734,10 +691,6 @@
             min-width: 28px;
         }
 
-
-        /* =====================================================
-           اسم الفصل
-        ===================================================== */
 
         .chapter-name {
             color: inherit;
@@ -754,6 +707,59 @@
             font-size: 10px;
 
             letter-spacing: .08em;
+
+            white-space: nowrap;
+        }
+
+
+        .chapter-status.completed {
+            color: #760000;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+
+        .chapter-item.completed {
+            border-color:
+                #260000;
+        }
+
+
+        .chapter-item.completed .chapter-number {
+            color:
+                #760000;
+        }
+
+
+        /* =====================================================
+           الفصول غير المنشورة
+        ===================================================== */
+
+        .chapter-item.unavailable {
+            cursor: default;
+
+            opacity: .55;
+        }
+
+
+        .chapter-item.unavailable:hover {
+            color: #777;
+
+            border-color:
+                #1b1b1b;
+
+            background:
+                rgba(255,255,255,.012);
+
+            transform: none;
+        }
+
+
+        .chapter-item.unavailable:hover::before {
+            transform:
+                scaleY(0);
         }
 
 
@@ -819,7 +825,7 @@
             background:
                 radial-gradient(
                     circle at 50% 0%,
-                    rgba(120, 0, 0, 0.06),
+                    rgba(120,0,0,.06),
                     transparent 40%
                 ),
                 #eeeeee;
@@ -842,25 +848,10 @@
         }
 
 
-        body.light-mode .logo {
+        body.light-mode .logo,
+        body.light-mode .page-title {
             color:
                 #202020;
-        }
-
-
-        body.light-mode .sidebar-divider {
-            background:
-                linear-gradient(
-                    to left,
-                    #900000,
-                    rgba(144, 0, 0, 0)
-                );
-        }
-
-
-        body.light-mode .nav-item {
-            color:
-                #777;
         }
 
 
@@ -872,15 +863,9 @@
             background:
                 linear-gradient(
                     to left,
-                    rgba(120, 0, 0, .07),
+                    rgba(120,0,0,.07),
                     transparent
                 );
-        }
-
-
-        body.light-mode .nav-number {
-            color:
-                #777;
         }
 
 
@@ -890,12 +875,6 @@
 
             color:
                 #777;
-        }
-
-
-        body.light-mode .page-title {
-            color:
-                #202020;
         }
 
 
@@ -951,9 +930,9 @@
         }
 
 
-        body.light-mode .chapter-status {
+        body.light-mode .chapter-status.completed {
             color:
-                #777;
+                #800000;
         }
 
 
@@ -966,18 +945,6 @@
 
             background:
                 rgba(255,255,255,.65);
-        }
-
-
-        body.light-mode .back-button:hover {
-            color:
-                #222;
-
-            border-color:
-                #800000;
-
-            background:
-                rgba(120,0,0,.06);
         }
 
 
@@ -994,14 +961,6 @@
             }
 
 
-            html::-webkit-scrollbar {
-                width: 0;
-                height: 0;
-
-                display: none;
-            }
-
-
             body {
                 overflow-x: hidden;
 
@@ -1009,21 +968,11 @@
             }
 
 
-            body::-webkit-scrollbar {
-                width: 0;
-                height: 0;
-
-                display: none;
-            }
-
-
-            /* =============================================
-               القائمة
-            ============================================== */
-
             .sidebar {
                 top: 0;
+
                 right: 0;
+
                 left: auto;
 
                 width:
@@ -1033,11 +982,6 @@
 
                 padding:
                     35px 25px 25px;
-
-                border-left:
-                    1px solid #260000;
-
-                border-right: 0;
 
                 transform:
                     translate3d(
@@ -1072,10 +1016,6 @@
             }
 
 
-            /* =============================================
-               الخلفية
-            ============================================== */
-
             .mobile-menu-overlay {
                 position: fixed;
 
@@ -1084,7 +1024,7 @@
                 display: block;
 
                 background:
-                    rgba(0, 0, 0, .55);
+                    rgba(0,0,0,.55);
 
                 opacity: 0;
 
@@ -1108,10 +1048,6 @@
                 pointer-events: auto;
             }
 
-
-            /* =============================================
-               زر فتح القائمة
-            ============================================== */
 
             .mobile-menu-button {
                 position: fixed;
@@ -1139,7 +1075,7 @@
                 border-radius: 2px;
 
                 background:
-                    rgba(5, 5, 5, .96);
+                    rgba(5,5,5,.96);
 
                 cursor: pointer;
 
@@ -1169,10 +1105,6 @@
             }
 
 
-            /* =============================================
-               زر الإغلاق
-            ============================================== */
-
             .mobile-close-button {
                 position: absolute;
 
@@ -1197,8 +1129,8 @@
                 background:
                     linear-gradient(
                         145deg,
-                        rgba(105, 0, 0, .2),
-                        rgba(255, 255, 255, .025)
+                        rgba(105,0,0,.2),
+                        rgba(255,255,255,.025)
                     );
 
                 color:
@@ -1207,68 +1139,56 @@
                 font-size:
                     24px;
 
-                cursor: pointer;
+                cursor:
+                    pointer;
 
-                z-index: 5;
-
-                transition:
-                    color .25s ease,
-                    border-color .25s ease,
-                    background .25s ease;
+                z-index:
+                    5;
             }
 
-
-            .mobile-close-button:hover {
-                color:
-                    #ffffff;
-
-                border-color:
-                    #850000;
-            }
-
-
-            /* =============================================
-               محتوى القائمة
-            ============================================== */
 
             .logo {
-                text-align: right;
-
-                margin-top: 40px;
+                margin-top:
+                    40px;
             }
 
 
             .navigation {
-                flex-direction: column;
+                flex-direction:
+                    column;
 
-                gap: 8px;
+                gap:
+                    8px;
             }
 
 
             .nav-item {
-                width: 100%;
+                width:
+                    100%;
 
-                min-height: 56px;
+                min-height:
+                    56px;
 
-                justify-content: flex-start;
+                justify-content:
+                    flex-start;
             }
 
 
             .sidebar-bottom {
-                margin-top: auto;
+                margin-top:
+                    auto;
             }
 
 
-            /* =============================================
-               صفحة الفصول
-            ============================================== */
-
             .chapters-wrapper {
-                width: 100%;
+                width:
+                    100%;
 
-                min-height: 100vh;
+                min-height:
+                    100vh;
 
-                margin-right: 0;
+                margin-right:
+                    0;
 
                 padding:
                     30px 14px 60px;
@@ -1276,12 +1196,14 @@
 
 
             .chapters-page {
-                max-width: 100%;
+                max-width:
+                    100%;
             }
 
 
             .page-header {
-                margin-bottom: 35px;
+                margin-bottom:
+                    35px;
             }
 
 
@@ -1292,24 +1214,29 @@
 
 
             .volume-info {
-                gap: 12px;
+                gap:
+                    12px;
             }
 
 
             .volume-title {
-                font-size: 17px;
+                font-size:
+                    17px;
             }
 
 
             .volume-count {
-                font-size: 10px;
+                font-size:
+                    10px;
             }
 
 
             .chapters-list {
-                grid-template-columns: 1fr;
+                grid-template-columns:
+                    1fr;
 
-                gap: 8px;
+                gap:
+                    8px;
             }
 
 
@@ -1320,7 +1247,8 @@
 
 
             .chapter-item {
-                min-height: 62px;
+                min-height:
+                    62px;
 
                 padding:
                     0 15px;
@@ -1328,17 +1256,20 @@
 
 
             .chapter-name {
-                font-size: 13px;
+                font-size:
+                    13px;
             }
 
 
             .chapter-status {
-                display: none;
+                font-size:
+                    10px;
             }
 
 
             .back-button {
-                width: 100%;
+                width:
+                    100%;
             }
 
         }
@@ -1351,20 +1282,32 @@
         @media (max-width: 450px) {
 
             .mobile-menu-button {
-                top: 14px;
-                right: 14px;
+                top:
+                    14px;
 
-                width: 43px;
-                height: 43px;
+                right:
+                    14px;
+
+                width:
+                    43px;
+
+                height:
+                    43px;
             }
 
 
             .mobile-close-button {
-                top: 14px;
-                right: 14px;
+                top:
+                    14px;
 
-                width: 41px;
-                height: 41px;
+                right:
+                    14px;
+
+                width:
+                    41px;
+
+                height:
+                    41px;
             }
 
 
@@ -1384,7 +1327,7 @@
 
 
     <!-- =====================================================
-         طبقة إغلاق — الهاتف
+         طبقة إغلاق الهاتف
     ====================================================== -->
 
     <div
@@ -1394,7 +1337,7 @@
 
 
     <!-- =====================================================
-         زر القائمة — الهاتف
+         زر القائمة
     ====================================================== -->
 
     <button
@@ -1412,13 +1355,11 @@
 
 
     <!-- =====================================================
-         القائمة الجانبية
-    ===================================================== -->
+         القائمة
+    ====================================================== -->
 
     <aside class="sidebar">
 
-
-        <!-- زر الإغلاق — الهاتف -->
 
         <button
             class="mobile-close-button"
@@ -1445,7 +1386,6 @@
                 href="../"
                 class="nav-item"
             >
-
                 <span class="nav-number">
                     01
                 </span>
@@ -1453,7 +1393,6 @@
                 <span>
                     الرئيسية
                 </span>
-
             </a>
 
 
@@ -1461,7 +1400,6 @@
                 href="./"
                 class="nav-item active"
             >
-
                 <span class="nav-number">
                     02
                 </span>
@@ -1469,7 +1407,6 @@
                 <span>
                     الفصول
                 </span>
-
             </a>
 
 
@@ -1477,7 +1414,6 @@
                 href="#"
                 class="nav-item empty-link"
             >
-
                 <span class="nav-number">
                     03
                 </span>
@@ -1485,7 +1421,6 @@
                 <span>
                     عالم الرواية
                 </span>
-
             </a>
 
 
@@ -1493,7 +1428,6 @@
                 href="../settings/"
                 class="nav-item"
             >
-
                 <span class="nav-number">
                     04
                 </span>
@@ -1501,7 +1435,6 @@
                 <span>
                     إعدادات الموقع
                 </span>
-
             </a>
 
 
@@ -1523,7 +1456,7 @@
 
 
     <!-- =====================================================
-         محتوى الفصول
+         المحتوى
     ====================================================== -->
 
     <div class="chapters-wrapper">
@@ -1531,10 +1464,6 @@
 
         <main class="chapters-page">
 
-
-            <!-- =================================================
-                 الرأس
-            ================================================== -->
 
             <header class="page-header">
 
@@ -1553,10 +1482,6 @@
             </header>
 
 
-            <!-- =================================================
-                 المجلد الأول
-            ================================================== -->
-
             <section
                 class="volume"
                 id="volume-1"
@@ -1571,7 +1496,6 @@
 
                     <div class="volume-info">
 
-
                         <div class="volume-number">
                             01
                         </div>
@@ -1585,11 +1509,10 @@
 
 
                             <div class="volume-count">
-                                20 فصلًا
+                                50 فصلًا
                             </div>
 
                         </div>
-
 
                     </div>
 
@@ -1602,462 +1525,14 @@
                 </div>
 
 
-                <!-- =================================================
-                     الفصول
-                ================================================== -->
-
-                <div class="chapters-list">
-
-
-                    <!-- الفصل الأول -->
-
-                    <a
-                        href="chapter-1.html"
-                        class="chapter-item"
-                    >
-
-                        <span class="chapter-number">
-                            01
-                        </span>
-
-                        <span class="chapter-name">
-                            الفصل الأول
-                        </span>
-
-                        <span class="chapter-status">
-                            قراءة
-                        </span>
-
-                    </a>
-
-
-                    <!-- الفصل الثاني -->
-
-                    <a
-                        href="#"
-                        class="chapter-item"
-                    >
-
-                        <span class="chapter-number">
-                            02
-                        </span>
-
-                        <span class="chapter-name">
-                            الفصل الثاني
-                        </span>
-
-                        <span class="chapter-status">
-                            قريبًا
-                        </span>
-
-                    </a>
-
-
-                    <!-- الفصل الثالث -->
-
-                    <a
-                        href="#"
-                        class="chapter-item"
-                    >
-
-                        <span class="chapter-number">
-                            03
-                        </span>
-
-                        <span class="chapter-name">
-                            الفصل الثالث
-                        </span>
-
-                        <span class="chapter-status">
-                            قريبًا
-                        </span>
-
-                    </a>
-
-
-                    <!-- الفصل الرابع -->
-
-                    <a
-                        href="#"
-                        class="chapter-item"
-                    >
-
-                        <span class="chapter-number">
-                            04
-                        </span>
-
-                        <span class="chapter-name">
-                            الفصل الرابع
-                        </span>
-
-                        <span class="chapter-status">
-                            قريبًا
-                        </span>
-
-                    </a>
-
-
-                    <!-- الفصل الخامس -->
-
-                    <a
-                        href="#"
-                        class="chapter-item"
-                    >
-
-                        <span class="chapter-number">
-                            05
-                        </span>
-
-                        <span class="chapter-name">
-                            الفصل الخامس
-                        </span>
-
-                        <span class="chapter-status">
-                            قريبًا
-                        </span>
-
-                    </a>
-
-
-                    <!-- الفصل السادس -->
-
-                    <a
-                        href="#"
-                        class="chapter-item"
-                    >
-
-                        <span class="chapter-number">
-                            06
-                        </span>
-
-                        <span class="chapter-name">
-                            الفصل السادس
-                        </span>
-
-                        <span class="chapter-status">
-                            قريبًا
-                        </span>
-
-                    </a>
-
-
-                    <!-- الفصل السابع -->
-
-                    <a
-                        href="#"
-                        class="chapter-item"
-                    >
-
-                        <span class="chapter-number">
-                            07
-                        </span>
-
-                        <span class="chapter-name">
-                            الفصل السابع
-                        </span>
-
-                        <span class="chapter-status">
-                            قريبًا
-                        </span>
-
-                    </a>
-
-
-                    <!-- الفصل الثامن -->
-
-                    <a
-                        href="#"
-                        class="chapter-item"
-                    >
-
-                        <span class="chapter-number">
-                            08
-                        </span>
-
-                        <span class="chapter-name">
-                            الفصل الثامن
-                        </span>
-
-                        <span class="chapter-status">
-                            قريبًا
-                        </span>
-
-                    </a>
-
-
-                    <!-- الفصل التاسع -->
-
-                    <a
-                        href="#"
-                        class="chapter-item"
-                    >
-
-                        <span class="chapter-number">
-                            09
-                        </span>
-
-                        <span class="chapter-name">
-                            الفصل التاسع
-                        </span>
-
-                        <span class="chapter-status">
-                            قريبًا
-                        </span>
-
-                    </a>
-
-
-                    <!-- الفصل العاشر -->
-
-                    <a
-                        href="#"
-                        class="chapter-item"
-                    >
-
-                        <span class="chapter-number">
-                            10
-                        </span>
-
-                        <span class="chapter-name">
-                            الفصل العاشر
-                        </span>
-
-                        <span class="chapter-status">
-                            قريبًا
-                        </span>
-
-                    </a>
-
-
-                    <!-- الفصل الحادي عشر -->
-
-                    <a
-                        href="#"
-                        class="chapter-item"
-                    >
-
-                        <span class="chapter-number">
-                            11
-                        </span>
-
-                        <span class="chapter-name">
-                            الفصل الحادي عشر
-                        </span>
-
-                        <span class="chapter-status">
-                            قريبًا
-                        </span>
-
-                    </a>
-
-
-                    <!-- الفصل الثاني عشر -->
-
-                    <a
-                        href="#"
-                        class="chapter-item"
-                    >
-
-                        <span class="chapter-number">
-                            12
-                        </span>
-
-                        <span class="chapter-name">
-                            الفصل الثاني عشر
-                        </span>
-
-                        <span class="chapter-status">
-                            قريبًا
-                        </span>
-
-                    </a>
-
-
-                    <!-- الفصل الثالث عشر -->
-
-                    <a
-                        href="#"
-                        class="chapter-item"
-                    >
-
-                        <span class="chapter-number">
-                            13
-                        </span>
-
-                        <span class="chapter-name">
-                            الفصل الثالث عشر
-                        </span>
-
-                        <span class="chapter-status">
-                            قريبًا
-                        </span>
-
-                    </a>
-
-
-                    <!-- الفصل الرابع عشر -->
-
-                    <a
-                        href="#"
-                        class="chapter-item"
-                    >
-
-                        <span class="chapter-number">
-                            14
-                        </span>
-
-                        <span class="chapter-name">
-                            الفصل الرابع عشر
-                        </span>
-
-                        <span class="chapter-status">
-                            قريبًا
-                        </span>
-
-                    </a>
-
-
-                    <!-- الفصل الخامس عشر -->
-
-                    <a
-                        href="#"
-                        class="chapter-item"
-                    >
-
-                        <span class="chapter-number">
-                            15
-                        </span>
-
-                        <span class="chapter-name">
-                            الفصل الخامس عشر
-                        </span>
-
-                        <span class="chapter-status">
-                            قريبًا
-                        </span>
-
-                    </a>
-
-
-                    <!-- الفصل السادس عشر -->
-
-                    <a
-                        href="#"
-                        class="chapter-item"
-                    >
-
-                        <span class="chapter-number">
-                            16
-                        </span>
-
-                        <span class="chapter-name">
-                            الفصل السادس عشر
-                        </span>
-
-                        <span class="chapter-status">
-                            قريبًا
-                        </span>
-
-                    </a>
-
-
-                    <!-- الفصل السابع عشر -->
-
-                    <a
-                        href="#"
-                        class="chapter-item"
-                    >
-
-                        <span class="chapter-number">
-                            17
-                        </span>
-
-                        <span class="chapter-name">
-                            الفصل السابع عشر
-                        </span>
-
-                        <span class="chapter-status">
-                            قريبًا
-                        </span>
-
-                    </a>
-
-
-                    <!-- الفصل الثامن عشر -->
-
-                    <a
-                        href="#"
-                        class="chapter-item"
-                    >
-
-                        <span class="chapter-number">
-                            18
-                        </span>
-
-                        <span class="chapter-name">
-                            الفصل الثامن عشر
-                        </span>
-
-                        <span class="chapter-status">
-                            قريبًا
-                        </span>
-
-                    </a>
-
-
-                    <!-- الفصل التاسع عشر -->
-
-                    <a
-                        href="#"
-                        class="chapter-item"
-                    >
-
-                        <span class="chapter-number">
-                            19
-                        </span>
-
-                        <span class="chapter-name">
-                            الفصل التاسع عشر
-                        </span>
-
-                        <span class="chapter-status">
-                            قريبًا
-                        </span>
-
-                    </a>
-
-
-                    <!-- الفصل العشرون -->
-
-                    <a
-                        href="#"
-                        class="chapter-item"
-                    >
-
-                        <span class="chapter-number">
-                            20
-                        </span>
-
-                        <span class="chapter-name">
-                            الفصل العشرون
-                        </span>
-
-                        <span class="chapter-status">
-                            قريبًا
-                        </span>
-
-                    </a>
-
-
-                </div>
+                <div
+                    class="chapters-list"
+                    id="chapters-list"
+                ></div>
 
 
             </section>
 
-
-            <!-- =================================================
-                 العودة
-            ================================================== -->
 
             <a
                 href="../"
@@ -2080,6 +1555,79 @@
     <script>
 
         /* =================================================
+           الإعدادات العامة
+        ================================================= */
+
+        const MAX_CHAPTERS =
+            50;
+
+
+        /*
+           آخر فصل منشور حاليًا.
+           غيّره من 1 إلى 2 عند إضافة الفصل الثاني.
+        */
+
+        const LATEST_PUBLISHED_CHAPTER =
+            1;
+
+
+        const chapterNames = {
+
+            1: "الفصل الأول",
+            2: "الفصل الثاني",
+            3: "الفصل الثالث",
+            4: "الفصل الرابع",
+            5: "الفصل الخامس",
+            6: "الفصل السادس",
+            7: "الفصل السابع",
+            8: "الفصل الثامن",
+            9: "الفصل التاسع",
+            10: "الفصل العاشر",
+            11: "الفصل الحادي عشر",
+            12: "الفصل الثاني عشر",
+            13: "الفصل الثالث عشر",
+            14: "الفصل الرابع عشر",
+            15: "الفصل الخامس عشر",
+            16: "الفصل السادس عشر",
+            17: "الفصل السابع عشر",
+            18: "الفصل الثامن عشر",
+            19: "الفصل التاسع عشر",
+            20: "الفصل العشرون",
+            21: "الفصل الحادي والعشرون",
+            22: "الفصل الثاني والعشرون",
+            23: "الفصل الثالث والعشرون",
+            24: "الفصل الرابع والعشرون",
+            25: "الفصل الخامس والعشرون",
+            26: "الفصل السادس والعشرون",
+            27: "الفصل السابع والعشرون",
+            28: "الفصل الثامن والعشرون",
+            29: "الفصل التاسع والعشرون",
+            30: "الفصل الثلاثون",
+            31: "الفصل الحادي والثلاثون",
+            32: "الفصل الثاني والثلاثون",
+            33: "الفصل الثالث والثلاثون",
+            34: "الفصل الرابع والثلاثون",
+            35: "الفصل الخامس والثلاثون",
+            36: "الفصل السادس والثلاثون",
+            37: "الفصل السابع والثلاثون",
+            38: "الفصل الثامن والثلاثون",
+            39: "الفصل التاسع والثلاثون",
+            40: "الفصل الأربعون",
+            41: "الفصل الحادي والأربعون",
+            42: "الفصل الثاني والأربعون",
+            43: "الفصل الثالث والأربعون",
+            44: "الفصل الرابع والأربعون",
+            45: "الفصل الخامس والأربعون",
+            46: "الفصل السادس والأربعون",
+            47: "الفصل السابع والأربعون",
+            48: "الفصل الثامن والأربعون",
+            49: "الفصل التاسع والأربعون",
+            50: "الفصل الخمسون"
+
+        };
+
+
+        /* =================================================
            إعدادات الموقع
         ================================================= */
 
@@ -2095,7 +1643,7 @@
             ) || "segoe";
 
 
-        const siteFonts = {
+        const fontMap = {
 
             segoe:
                 '"Segoe UI", Tahoma, Arial, sans-serif',
@@ -2115,25 +1663,233 @@
         };
 
 
-        /* تطبيق الوضع */
-
         document.body.classList.toggle(
             "light-mode",
             savedTheme === "light"
         );
 
 
-        /* تطبيق خط الموقع */
-
         document.body.style.fontFamily =
-            siteFonts[savedFont] ||
-            siteFonts.segoe;
+            fontMap[savedFont] ||
+            fontMap.segoe;
 
 
         document.body.classList.toggle(
             "site-font-amiri",
             savedFont === "amiri"
         );
+
+
+        /* =================================================
+           إنشاء 50 فصل
+        ================================================= */
+
+        const chaptersList =
+            document.getElementById(
+                "chapters-list"
+            );
+
+
+        let readingProgress =
+            {};
+
+
+        try {
+
+            readingProgress =
+                JSON.parse(
+                    localStorage.getItem(
+                        "voidReadingProgress"
+                    )
+                ) || {};
+
+        } catch (error) {
+
+            readingProgress =
+                {};
+
+        }
+
+
+        for (
+            let chapter = 1;
+            chapter <= MAX_CHAPTERS;
+            chapter++
+        ) {
+
+            const item =
+                document.createElement(
+                    "a"
+                );
+
+
+            item.className =
+                "chapter-item";
+
+
+            const isPublished =
+                chapter <=
+                LATEST_PUBLISHED_CHAPTER;
+
+
+            const data =
+                readingProgress[
+                    chapter
+                ];
+
+
+            const completed =
+                data &&
+                data.completed === true;
+
+
+            if (
+                completed
+            ) {
+
+                item.classList.add(
+                    "completed"
+                );
+
+            }
+
+
+            if (
+                !isPublished
+            ) {
+
+                item.classList.add(
+                    "unavailable"
+                );
+
+                item.href =
+                    "#";
+
+            } else {
+
+                item.href =
+                    `chapter-${chapter}.html`;
+
+            }
+
+
+            const number =
+                document.createElement(
+                    "span"
+                );
+
+
+            number.className =
+                "chapter-number";
+
+
+            number.textContent =
+                String(
+                    chapter
+                )
+                .padStart(
+                    2,
+                    "0"
+                );
+
+
+            const name =
+                document.createElement(
+                    "span"
+                );
+
+
+            name.className =
+                "chapter-name";
+
+
+            name.textContent =
+                chapterNames[
+                    chapter
+                ] ||
+                `الفصل ${chapter}`;
+
+
+            const status =
+                document.createElement(
+                    "span"
+                );
+
+
+            status.className =
+                "chapter-status";
+
+
+            if (
+                !isPublished
+            ) {
+
+                status.textContent =
+                    "قريبًا";
+
+            } else if (
+                completed
+            ) {
+
+                status.textContent =
+                    "✓";
+
+                status.classList.add(
+                    "completed"
+                );
+
+            } else {
+
+                status.textContent =
+                    "قراءة";
+
+            }
+
+
+            item.appendChild(
+                number
+            );
+
+
+            item.appendChild(
+                name
+            );
+
+
+            item.appendChild(
+                status
+            );
+
+
+            chaptersList.appendChild(
+                item
+            );
+
+        }
+
+
+        /* =================================================
+           منع الفصول غير المنشورة
+        ================================================= */
+
+        document
+            .querySelectorAll(
+                ".chapter-item.unavailable"
+            )
+            .forEach(
+                (link) => {
+
+                    link.addEventListener(
+                        "click",
+                        (event) => {
+
+                            event.preventDefault();
+
+                        }
+                    );
+
+                }
+            );
 
 
         /* =================================================
@@ -2248,52 +2004,6 @@
         );
 
 
-        /* =================================================
-           الروابط غير الجاهزة
-        ================================================= */
-
-        document
-            .querySelectorAll(".empty-link")
-            .forEach(
-                (link) => {
-
-                    link.addEventListener(
-                        "click",
-                        (event) => {
-
-                            event.preventDefault();
-
-                        }
-                    );
-
-                }
-            );
-
-
-        document
-            .querySelectorAll(
-                ".chapter-item[href='#']"
-            )
-            .forEach(
-                (link) => {
-
-                    link.addEventListener(
-                        "click",
-                        (event) => {
-
-                            event.preventDefault();
-
-                        }
-                    );
-
-                }
-            );
-
-
-        /* =================================================
-           إغلاق القائمة بزر ESC
-        ================================================= */
-
         document.addEventListener(
             "keydown",
             (event) => {
@@ -2311,6 +2021,30 @@
 
             }
         );
+
+
+        /* =================================================
+           الروابط غير الجاهزة
+        ================================================= */
+
+        document
+            .querySelectorAll(
+                ".empty-link"
+            )
+            .forEach(
+                (link) => {
+
+                    link.addEventListener(
+                        "click",
+                        (event) => {
+
+                            event.preventDefault();
+
+                        }
+                    );
+
+                }
+            );
 
     </script>
 
